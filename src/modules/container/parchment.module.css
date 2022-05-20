@@ -1,0 +1,53 @@
+.background {
+    position: fixed;
+    top: 0%;
+    bottom: 0%;
+    width: 100vw;
+    margin: auto ;
+    background-image: url(/assets/backgrounds/background-1.avif);
+    background-size: cover;
+}
+
+.container{
+    position: relative;
+    padding: 1rem;
+    width: 95%;
+    margin: 1rem auto 0 auto;
+    min-height: calc(100vh - 2.5rem);
+}
+
+.parchment{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+@media only screen and (min-width: 600px) {
+    .container {
+      width: 570px;
+    }
+  }
+  @media only screen and (min-width: 633px) {
+    .container {
+      width: 90%;
+    }
+  }
+@media only screen and (min-width: 1024px) {
+    .container {
+      width: 921px;
+      padding: 2rem;
+    }
+  }
+  @media only screen and (min-width: 1150px) {
+    .container {
+      width: 80%;
+    }
+  }
+  @media only screen and (min-width: 1700px) {
+    .container {
+      width: 1360px;
+      padding: 2.5rem
+    }
+  }
