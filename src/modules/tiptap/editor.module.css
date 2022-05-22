@@ -1,0 +1,34 @@
+.editor{
+    font-size: 1.25rem;
+    min-height: 200px;
+    border-radius: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(251, 190, 36, 0.15);
+    width:100%;
+}
+
+h1.heading{
+    font-size: 3rem;
+    line-height: 2;
+    font-family: Spirax;
+}
+
+h2.heading{
+    font-size: 1.75rem;
+    line-height: 1.5;
+}
+
+.horizontalRule{
+    @apply leading-none border-b-4 border-black font-handwriting px-1 hover:drop-shadow-md transition-all;
+    border-image: url(/assets/graphics/horizontal-line-1.svg) 0 0 100% 0 stretch
+}
+
+.orderedlist{
+    list-style: decimal;
+    margin-left: 2rem;
+}
+.unorderedlist{
+    list-style: circle;
+    margin-left: 2rem;
+
+}
