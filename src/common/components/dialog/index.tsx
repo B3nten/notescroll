@@ -21,17 +21,17 @@ function DialogComponent({ trigger, children, title = '', alert = false, action,
                 </Dialog.Trigger>
                 <Dialog.Portal>
                     <Dialog.Overlay className={styles.dialogoverlay}>
-                        <div className='fixed inset-0 bg-amber-800 bg-opacity-20 saturate-[.1]'></div>
+                        <div className='fixed inset-0 bg-accent saturate-50 bg-opacity-30'></div>
                     </Dialog.Overlay>
                     <Dialog.Content className={styles.dialogcontent}>
-                        <div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#e7dccc] p-4 rounded-lg shadow-lg'>
+                        <div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 modal-box w-auto'>
                             <div className="flex w-full justify-between items-end">
-                                <Dialog.Title className='font-fancy text-2xl mr-10'>
+                                <Dialog.Title className='text-2xl mr-10'>
                                     {title}
                                 </Dialog.Title>
                                 <Dialog.Close asChild >
                                     <button
-                                        className='h-6 w-6 rounded-full bg-amber-300 bg-opacity-40 text-lg hover:bg-opacity-100 transition-all'>
+                                        className='btn btn-sm btn-circle'>
                                         X
                                     </button>
                                 </Dialog.Close>
@@ -57,7 +57,7 @@ function DialogComponent({ trigger, children, title = '', alert = false, action,
                     <AlertDialog.Content className={styles.dialogcontent}>
                         <div className='fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#e7dccc] p-4 rounded-lg shadow-lg'>
                             <div className="flex w-full justify-between items-end">
-                                <AlertDialog.Title className='font-fancy text-2xl mr-10'>
+                                <AlertDialog.Title className='text-2xl mr-10'>
                                     {title}
                                 </AlertDialog.Title>
                             </div>

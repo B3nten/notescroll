@@ -14,8 +14,8 @@ export function Dropdown({ trigger, children }: Props) {
             </DropdownMenu.Trigger>
             <DropdownMenu.Content
                 sideOffset={-10}
-                className={styles.content + ' p-4 bg-[#e7dccc] shadow-xl rounded-lg origin-top'}>
-                <DropdownMenu.Arrow className='fill-[#e7dccc]' />
+                className={styles.content + ' p1 bg-accent shadow-xl rounded-lg origin-top '}>
+                <DropdownMenu.Arrow className='fill-accent' />
                 <div className='space-y-1'>{children}</div>
             </DropdownMenu.Content>
         </DropdownMenu.Root>

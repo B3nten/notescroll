@@ -11,7 +11,7 @@ export function Login({ children }: any) {
   else if (session.loaded && !session.session) {
     return (
       <div className='w-full flex flex-col items-center justify-center min-h-[calc(100vh-6rem)]'>
-        <h1 className='font-fancy text-5xl sm:text-7xl mb-10'>Notescroll</h1>
+        <h1 className='text-5xl font-heading sm:text-7xl mb-10'>Notescroll</h1>
         <LogInDashboard />
       </div>
     )
@@ -94,9 +94,9 @@ function LogInDashboard() {
           </Tabs.Trigger>
         </Tabs.List>
         <Tabs.Content value='login' className='w-full'>
-          <h1 className='font-fancy text-3xl my-10 text-center'>
+          <h2 className='text-3xl my-10 text-center'>
             Log into an account
-          </h1>
+          </h2>
           <form
             className='flex flex-col w-full space-y-6'
             onSubmit={loginHandleSubmit(onLoginSubmit)}>
@@ -104,7 +104,7 @@ function LogInDashboard() {
               <input
                 {...loginRegister('email', { required: true })}
                 aria-invalid={loginErrors.email ? 'true' : 'false'}
-                className='peer h-8 w-full rounded-md pl-2 placeholder-transparent focus:outline-none focus:border-rose-600  bg-amber-300 bg-opacity-40 input-border'
+                className='peer input h-8 w-full placeholder-transparent input-border'
                 name='email'
                 placeholder='email'
               ></input>
@@ -125,7 +125,7 @@ function LogInDashboard() {
               <input
                 {...loginRegister('password', { required: true })}
                 aria-invalid={loginErrors.password ? 'true' : 'false'}
-                className='peer h-8 w-full rounded-md pl-2 placeholder-transparent focus:outline-none focus:border-rose-600  bg-amber-300 bg-opacity-40 input-border'
+                className='peer input h-8 w-full placeholder-transparent input-border'
                 name='password'
                 placeholder='password'
                 type='password'
@@ -148,9 +148,9 @@ function LogInDashboard() {
         </Tabs.Content>
         {/* REGISTRATION */}
         <Tabs.Content value='register' className='w-full'>
-          <h1 className='font-fancy text-3xl my-6 text-center'>
+          <h2 className='text-3xl my-6 text-center'>
             Create an account
-          </h1>
+          </h2>
           <form
             className='flex flex-col w-full space-y-6'
             onSubmit={signupHandleSubmit(onSignupSubmit)}>
@@ -158,7 +158,7 @@ function LogInDashboard() {
               <input
                 {...signupRegister('name', { required: true })}
                 aria-invalid={signupErrors.name ? 'true' : 'false'}
-                className='peer h-8 w-full rounded-md pl-2 placeholder-transparent focus:outline-none focus:border-rose-600  bg-amber-300 bg-opacity-40 input-border'
+                className='peer input h-8 w-full placeholder-transparent input-border'
                 name='name'
                 placeholder='name'></input>
               <label
@@ -178,7 +178,7 @@ function LogInDashboard() {
               <input
                 {...signupRegister('email', { required: true })}
                 aria-invalid={signupErrors.email ? 'true' : 'false'}
-                className='peer h-8 w-full rounded-md pl-2 placeholder-transparent focus:outline-none focus:border-rose-600  bg-amber-300 bg-opacity-40 input-border'
+                className='peer input h-8 w-full placeholder-transparent input-border'
                 name='email'
                 placeholder='email'></input>
               <label
@@ -198,7 +198,7 @@ function LogInDashboard() {
               <input
                 {...signupRegister('password', { required: true })}
                 aria-invalid={signupErrors.password ? 'true' : 'false'}
-                className='peer h-8 w-full rounded-md pl-2 placeholder-transparent focus:outline-none focus:border-rose-600  bg-amber-300 bg-opacity-40 input-border'
+                className='peer input h-8 w-full placeholder-transparent input-border'
                 name='password'
                 placeholder='password'
                 type='password'
