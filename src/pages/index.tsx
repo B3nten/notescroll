@@ -1,40 +1,19 @@
-
-import { Dialog } from "@/common/components/dialog"
-import { Dropdown } from "@/common/components/dropdown"
-import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-import supabase, { logOut } from "@/modules/supabase"
-import { Editor } from "@/modules/tiptap/Editor"
-
+import { SWRInput } from "@/common/components/SWRInput"
+import supabase from "@/modules/supabase"
+import { SWREditorWrapper } from "@/modules/tiptap/wrappers/SWREditorWrapper"
+import Link from "next/link"
 
 
 
 export default function Index() {
 
+  const query = supabase.from('documents').select('*').eq('id', '3ae344f4-c282-4b77-a055-ad7ba1c7b0f8').single()
+
   return (
-    <div className='space-x-2'>
-      <button className='text-xl p-2 bg-slate-500 text-white' onClick={logOut}>logout</button>
-      <Dialog
-        title='Sample dialog'
-        trigger={<button className='text-xl p-2 bg-slate-500 text-white'>dialog</button>}>
-        <div>THIS IS A DIALOG BOX</div>
-      </Dialog>
-      <Dialog alert
-        action={<button className='px-4 py-2 bg-green-400 rounded-xl'>okay</button>}
-        cancel={<button className='px-4 py-2 bg-red-400 rounded-xl'>cancel</button>}
-        title='Sample dialog'
-        trigger={<button className='text-xl p-2 bg-slate-500 text-white'>alert</button>}>
-        <div>THIS IS A DIALOG BOX</div>
-      </Dialog>
-      <Dropdown
-        trigger={<button className='text-xl'>hello ↴</button>}>
-        <DropdownMenu.Item>
-          <button>test</button>
-        </DropdownMenu.Item>
-        <DropdownMenu.Item>
-          <button>test 2</button>
-        </DropdownMenu.Item>
-      </Dropdown>
-      <Editor/>
+    <div>
+      <SWREditorWrapper query={query} content='overview' plaintext='overview_plaintext' />
+      <SWRInput query={query} field='name' />
+      <Link href='/test'>Go To Test</Link>
     </div>
   )
 }
