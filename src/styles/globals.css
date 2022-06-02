@@ -1,10 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Spirax&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-html{
-    @apply font-handwriting
+body{
+    font-family: var(--body-font);
 }
 
+html {
+    scrollbar-gutter: stable;
+    overflow: overlay
+}
+
+
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--s));
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
