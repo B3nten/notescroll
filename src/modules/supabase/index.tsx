@@ -34,6 +34,7 @@ export function SupabaseProvider(props:any){
             setUser({user: supabase.auth.user(), loaded: true})
             setSession({session: supabase.auth.session(), loaded: true})
         })
+        
     }, [])
 
     return <SupabaseContext.Provider value={{user, session}}>{props.children}</SupabaseContext.Provider>

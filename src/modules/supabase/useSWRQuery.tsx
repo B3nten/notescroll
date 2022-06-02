@@ -2,6 +2,13 @@ import { PostgrestBuilder } from '@supabase/postgrest-js'
 import toast from "react-hot-toast"
 import useSWR, { Fetcher } from 'swr'
 
+interface Query {
+    data: {} | null,
+    error: {} | null,
+    isValidating: boolean,
+    mutate: ()=>any
+}
+
 export function useSWRQuery<T>(query: PostgrestBuilder<T>) {
 
     const fetcher: Fetcher = async () =>{
@@ -14,10 +21,8 @@ export function useSWRQuery<T>(query: PostgrestBuilder<T>) {
     }
     
     //@ts-ignore
-    const { data, error, isValidating, mutate} = useSWR(JSON.stringify(query.url), fetcher, { revalidateOnFocus: false })
-    //@ts-ignore
-    console.log(JSON.stringify(query.url))
-
+    const { data, error, isValidating, mutate}: Query = useSWR(JSON.stringify(query.url), fetcher, { revalidateOnFocus: false })
+    
     return {
         data: data ? data : null,
         loaded: !data && isValidating ? false : true,
