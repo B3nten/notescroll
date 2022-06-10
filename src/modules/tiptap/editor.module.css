@@ -1,45 +1,46 @@
-.editor{
+.editor {
     overflow-y: scroll;
+    font-size: 1rem;
+    background-color: hsl(var(--b2))
 }
 
-.editor.notEditable{
+.editor.notEditable {
     background: transparent;
 }
 
-h1.heading{
+
+h1.heading {
     font-size: 3rem;
     line-height: 2;
     @apply font-heading;
 }
 
-h2.heading{
+h2.heading {
     font-size: 2rem;
     line-height: 1.5;
 }
 
-h3.heading{
+h3.heading {
     font-size: 1.5rem;
     line-height: 1.25;
 }
 
-.horizontalRule{
-    @apply leading-none border-b-4 border-black px-1 hover:drop-shadow-md transition-all;
+.horizontalRule {
+    @apply leading-none border-b-4 border-black px-1 transition-all;
     border-image: url(/assets/graphics/horizontal-line-1.svg) 0 0 100% 0 stretch
 }
 
-.orderedlist{
+.orderedlist {
     list-style: decimal;
     margin-left: 2rem;
 }
-.unorderedlist{
+
+.unorderedlist {
     list-style: circle;
     margin-left: 2rem;
 
 }
 
-.button{
+.button {
     @apply transition-all border border-transparent rounded-full p-1
-}
-.button.hover{
-    @apply hover:bg-amber-300 hover:bg-opacity-50 
 }

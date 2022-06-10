@@ -1,15 +1,15 @@
-.input-border{
+.input-border {
     border: solid 2px;
     border-image: url(/assets/graphics/horizontal-line-1.svg) 0 0 100% 0 stretch;
 }
 
-.reference{
+.reference {
     color: white;
     background-color: purple;
     border-radius: 3px;
     padding: 1px 5px 1px 5px;
     margin: 0px 5px 0px 5px;
-    background: linear-gradient(270deg, #8d00ff, #2f00ff,#8d00ff, #2f00ff);
+    background: linear-gradient(270deg, hsl(var(--p)), hsl(var(--s)), hsl(var(--p)), hsl(var(--s)));
     background-size: 400% 400%;
     -webkit-animation: AnimationName 6s linear infinite;
     -moz-animation: AnimationName 6s linear infinite;
@@ -17,26 +17,52 @@
     cursor: pointer;
 }
 
-.reference-bg{
-    background: linear-gradient(270deg, #8d00ff, #2f00ff,#8d00ff, #2f00ff);
+.reference-bg {
+    background: linear-gradient(270deg, #8d00ff, #2f00ff, #8d00ff, #2f00ff);
     background-size: 400% 400%;
     -webkit-animation: AnimationName 6s linear infinite;
     -moz-animation: AnimationName 6s linear infinite;
-    animation: gradient 6s linear infinite; 
+    animation: gradient 6s linear infinite;
 }
 
 @-webkit-keyframes gradient {
-    0%{background-position:0% 49%}
-    50%{background-position:100% 52%}
-    100%{background-position:0% 49%}
+    0% {
+        background-position: 0% 49%
+    }
+
+    50% {
+        background-position: 100% 52%
+    }
+
+    100% {
+        background-position: 0% 49%
+    }
 }
+
 @-moz-keyframes gradient {
-    0%{background-position:0% 49%}
-    50%{background-position:100% 52%}
-    100%{background-position:0% 49%}
+    0% {
+        background-position: 0% 49%
+    }
+
+    50% {
+        background-position: 100% 52%
+    }
+
+    100% {
+        background-position: 0% 49%
+    }
 }
+
 @keyframes gradient {
-    0%{background-position:0% 49%}
-    50%{background-position:100% 52%}
-    100%{background-position:0% 49%}
+    0% {
+        background-position: 0% 49%
+    }
+
+    50% {
+        background-position: 100% 52%
+    }
+
+    100% {
+        background-position: 0% 49%
+    }
 }
