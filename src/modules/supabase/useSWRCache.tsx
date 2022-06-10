@@ -9,7 +9,7 @@ interface Query {
     mutate: () => any,
 }
 
-export function useSWRQuery<T>(query: PostgrestBuilder<T>) {
+export function useSWRCache<T>(query: PostgrestBuilder<T>) {
 
     const fetcher: Fetcher = async () => {
         const { data, error } = await query
@@ -21,7 +21,7 @@ export function useSWRQuery<T>(query: PostgrestBuilder<T>) {
     }
 
     //@ts-ignore
-    const { data, error, isValidating, mutate }: Query = useSWR(JSON.stringify(query.url), fetcher, { revalidateOnFocus: false })
+    const { data, error, isValidating, mutate }: Query = useSWR(JSON.stringify(query.url), fetcher, { revalidateOnFocus: false, revalidateOnMount: false })
 
     return {
         data: data ? data : null,

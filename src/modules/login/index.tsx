@@ -10,7 +10,7 @@ export function Login({ children }: any) {
   if (!session.loaded) return null
   else if (session.loaded && !session.session) {
     return (
-      <div className='w-full flex flex-col items-center justify-center min-h-[calc(100vh-6rem)]'>
+      <div className='w-full min-h-[calc(100vh-10rem)] flex flex-col items-center justify-center'>
         <h1 className='text-5xl font-heading sm:text-7xl mb-10'>Notescroll</h1>
         <LogInDashboard />
       </div>
@@ -86,10 +86,10 @@ function LogInDashboard() {
         <Tabs.List
           aria-label='login or register an account'
           className='w-full flex justify-between'>
-          <Tabs.Trigger value='login' className='btn-underline'>
+          <Tabs.Trigger value='login' className='btn btn-sm btn-primary'>
             Login
           </Tabs.Trigger>
-          <Tabs.Trigger value='register' className='btn-underline'>
+          <Tabs.Trigger value='register' className='btn btn-sm btn-primary'>
             Register
           </Tabs.Trigger>
         </Tabs.List>
@@ -143,7 +143,7 @@ function LogInDashboard() {
                 </span>
               )}
             </div>
-            <input className='btn' type='submit' value='submit' disabled={signupIsSubmitting}></input>
+            <input className='btn btn-primary' type='submit' value='submit' disabled={signupIsSubmitting}></input>
           </form>
         </Tabs.Content>
         {/* REGISTRATION */}
@@ -216,7 +216,7 @@ function LogInDashboard() {
                 </span>
               )}
             </div>
-            <input className='btn' type='submit' value='submit' disabled={signupIsSubmitting}></input>
+            <input className='btn btn-primary' type='submit' value='submit' disabled={signupIsSubmitting}></input>
           </form>
         </Tabs.Content>
       </Tabs.Root>

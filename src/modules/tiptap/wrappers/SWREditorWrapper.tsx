@@ -10,9 +10,11 @@ interface Wrapper {
     content: string,
     plaintext: string,
     editable?: boolean,
+    minHeight?: string,
+    maxHeight?: string,
 }
 
-export function SWREditorWrapper({ query, content, plaintext, editable }: Wrapper) {
+export function SWREditorWrapper({ query, content, plaintext, editable, minHeight = '200px', maxHeight = 'none' }: Wrapper) {
 
     const table = query.url.pathname.substring(query.url.pathname.lastIndexOf('/') + 1)
     const { data: queryData, mutate, loaded }: any = useSWRQuery(query)
@@ -22,7 +24,6 @@ export function SWREditorWrapper({ query, content, plaintext, editable }: Wrappe
         const newState = { ...queryData, [content]: editorContent.json, [plaintext]: editorContent.text }
         mutate(newState, false)
         try {
-            console.log(content, plaintext)
             const { error } = await supabase.from(table).update({ [content]: editorContent.json, [plaintext]: editorContent.text }).eq('id', queryData.id)
             if (error) throw error
             setSaveState('saved')
@@ -35,12 +36,13 @@ export function SWREditorWrapper({ query, content, plaintext, editable }: Wrappe
 
     return (
         <Editor
-            minHeight={'300px'}
+            minHeight={minHeight}
+            maxHeight={maxHeight}
             editable={editable}
             contentLoaded={loaded}
             saveState={saveState}
             onUpdate={() => setSaveState('saving')}
             onDebouncedUpdate={(content) => handleChange(content)}
-            initialContent={queryData ? queryData[content] : null} />
+            content={queryData ? queryData[content] : null} />
     )
 }

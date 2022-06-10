@@ -15,12 +15,12 @@ export function useSearch(input: string) {
     })
 
     const search = useCallback(debounce(async (input: string) => {
-        setSearchResult(produce((draft)=>{draft.data = null}))
+        setSearchResult(produce((draft) => { draft.data = null }))
         if (input.length > 0) {
-            setSearchResult(produce((draft)=>{draft.isValidating = true}))
+            setSearchResult(produce((draft) => { draft.isValidating = true }))
             try {
                 const { data, error } = await supabase.rpc('search_documents', { document_term: input })
-                setSearchResult(produce((draft)=>{draft.isValidating = false}))
+                setSearchResult(produce((draft) => { draft.isValidating = false }))
                 if (error) throw error
                 setSearchResult(produce((draft) => {
                     draft.data = data
@@ -35,11 +35,10 @@ export function useSearch(input: string) {
         }
     }, 600), [input])
 
-    useEffect(()=>{
+    useEffect(() => {
         search(input)
-        return ()=> search.cancel()
-    },[input])
-
+        return () => search.cancel()
+    }, [input])
 
     return searchResult
 }
