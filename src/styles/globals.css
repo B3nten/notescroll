@@ -5,31 +5,34 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--body-font: 'kalam';
+}
+
 body {
-    font-family: var(--body-font);
+	font-family: var(--body-font);
 }
 
 html {
-    scrollbar-gutter: stable;
-    overflow: overlay
+	scrollbar-gutter: stable;
+	overflow: overlay;
 }
 
 .contain {
-    padding: 1rem;
+	padding: 1rem;
 }
 
-
 ::-webkit-scrollbar {
-    width: 20px;
+	width: 20px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: transparent;
+	background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: hsl(var(--s));
-    border-radius: 20px;
-    border: 6px solid transparent;
-    background-clip: content-box;
+	background-color: hsl(var(--s));
+	border-radius: 20px;
+	border: 6px solid transparent;
+	background-clip: content-box;
 }
