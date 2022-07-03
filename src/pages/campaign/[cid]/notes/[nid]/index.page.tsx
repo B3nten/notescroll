@@ -34,6 +34,7 @@ export default function Note() {
 				query={query}
 				plaintext='overview_plaintext'
 				content='overview'
+				toolbarVisible
 			/>
 		</>
 	)

@@ -64,6 +64,12 @@ export function EditableDiv({ inputClassName, query, field }: EditableInput) {
 		},
 	})
 
+	useEffect(() => {
+		if (editor) {
+			editor.commands.setContent(value)
+		}
+	}, [value])
+
 	function handleChange({ editor }: any) {
 		setSaving('saving')
 		callback()
