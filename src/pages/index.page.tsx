@@ -14,6 +14,9 @@ import supabase, { useSession } from '@/modules/supabase'
 import toast from 'react-hot-toast'
 import { logOut } from '@/modules/supabase'
 import Settings from '@/modules/settings'
+import { useQuery } from 'react-query'
+import { useCache } from '@/common/hooks/useCache'
+import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
 
 export default function Index() {
 	const campaigns = useSWRQuery(queries.campaignList.query())
@@ -21,7 +24,7 @@ export default function Index() {
 	const router = useClientRouter()
 	const [newCampaignModal, setNewCampaignModal] = useState(false)
 	const session = useSession()
-
+	
 	return (
 		<>
 			{session.session && (

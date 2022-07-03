@@ -8,23 +8,33 @@ import { Toaster } from 'react-hot-toast'
 import { Metatags } from '@/modules/metatags'
 import { ThemeProvider } from '@/modules/theme'
 import { Spotlight } from '@/modules/spotlight'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
+const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
-  //@ts-ignore
-  const getLayout = Component.getLayout || ((page) => page)
-  return (
-    <SupabaseProvider>
-      <Metatags />
-      <Toaster toastOptions={{ style: { borderRadius: '20px', background: '#ede7d8', color: 'black' } }} />
-      <ThemeProvider>
-        <Login>
-          <Spotlight>
-            {getLayout(<Component {...pageProps} />)}
-          </Spotlight>
-        </Login>
-      </ThemeProvider>
-    </SupabaseProvider >
-  )
+	//@ts-ignore
+	const getLayout = Component.getLayout || ((page) => page)
+	return (
+		<SupabaseProvider>
+			<Metatags />
+			<Toaster
+				toastOptions={{
+					style: {
+						borderRadius: '20px',
+						background: '#ede7d8',
+						color: 'black',
+					},
+				}}
+			/>
+			<QueryClientProvider client={queryClient}>
+				<ThemeProvider>
+					<Login>
+						<Spotlight>{getLayout(<Component {...pageProps} />)}</Spotlight>
+					</Login>
+				</ThemeProvider>
+			</QueryClientProvider>
+		</SupabaseProvider>
+	)
 }
 export default MyApp

@@ -12,6 +12,7 @@ import { Layout } from '../../layout'
 import { Menu } from './Menu'
 import supabase from '@/modules/supabase'
 import { EditableDiv } from '@/common/components/inputs/EditableDiv'
+import { useCache } from '@/common/hooks/useCache'
 
 export default function Note() {
 	const router = useClientRouter()
