@@ -1,22 +1,17 @@
-import {
-	PostgrestBuilder,
-	PostgrestSingleResponse,
-} from '@supabase/postgrest-js'
-import { QueryKey, QueryOptions, useQuery } from 'react-query'
+import { QueryKey, useQuery } from 'react-query'
+import type { PostgrestSingleResponse } from '@supabase/postgrest-js'
+import type { UseQueryOptions } from 'react-query'
 
-export function useSupabaseQuery<T>(
+export function useSupabaseQuery<T = any>(
 	key: QueryKey,
-	fetcher: PostgrestBuilder<T> | PromiseLike<PostgrestSingleResponse<any>>,
-	options?: QueryOptions
+	query: PromiseLike<PostgrestSingleResponse<T>> & { _table?: string },
+	options?: UseQueryOptions<T> & { queryKey?: string | unknown[] }
 ) {
-	const query = useQuery(
-		key,
-		async () => {
-			const { data, error } = await fetcher
-			if (error) throw error
-			return data
-		},
-		options
-	)
-	return { ...query }
+	async function fetcher() {
+		const { data, error } = await query
+		if (error) throw error
+		return data
+	}
+
+	return useQuery<T>(key, async () => fetcher(), options)
 }

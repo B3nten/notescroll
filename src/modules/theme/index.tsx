@@ -1,18 +1,16 @@
-import { useState, createContext, useContext, useEffect } from 'react'
+import { createContext, useContext } from 'react'
 import styles from './theme.module.css'
-import { useSWRQuery } from '../supabase/useSWRQuery'
+import { UseQueryResult } from 'react-query'
 import supabase from '../supabase'
+import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
 
-const ThemeContext = createContext<any>({})
+const ThemeContext = createContext<UseQueryResult<any, unknown>>({} as UseQueryResult)
 
 export function ThemeProvider({ children }: any) {
-	const theme = useSWRQuery(supabase.from('profile').select('theme').single())
+	const theme = useSupabaseQuery(['profile'], supabase.from('profile').select('theme').single())
 
 	if (theme.data?.theme) {
-		document.documentElement.setAttribute(
-			'data-theme',
-			theme.data?.theme ?? 'dark'
-		)
+		document.documentElement.setAttribute('data-theme', theme.data?.theme ?? 'dark')
 	}
 
 	return (
