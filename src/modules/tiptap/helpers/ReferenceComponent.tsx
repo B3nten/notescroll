@@ -1,18 +1,11 @@
 import { NodeViewWrapper } from '@tiptap/react'
 import * as Popover from '@radix-ui/react-popover'
 import styles from './referenceComponent.module.css'
-import supabase from '../../supabase'
 import { useClientRouter } from '@/common/hooks/useClientRouter'
-import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
-import { definitions } from '@/types/database'
+import { useSingleNote } from '@/common/hooks/queries/notes'
 
 export function ReferenceComponent(props: any) {
-	const query = supabase
-		.from<definitions['documents']>('documents')
-		.select('*')
-		.eq('id', props.node.attrs.id)
-		.single()
-	const document = useSupabaseQuery(['documents', props.node.attrs.id], query)
+	const document = useSingleNote(props.node.attrs.id)
 	const router = useClientRouter()
 
 	return (
