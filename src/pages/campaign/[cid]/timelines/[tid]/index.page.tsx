@@ -13,6 +13,7 @@ import { LoadingSpinner } from '@/common/components/loading'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
 import { definitions } from '@/types/database'
+import { timelinesKeyBuilder } from '@/common/hooks/queries/timelines'
 import { RichtextWrapper } from '@/modules/tiptap/wrappers/RichtextWrapper'
 dayjs.extend(utc)
 
@@ -29,7 +30,10 @@ export default function Timeline() {
 		.select('id, date')
 		.eq('timeline_id', router.query.tid as string)
 
-	const timeline = useSupabaseQuery(['timelines', router.query.tid], timelineQuery)
+	const timeline = useSupabaseQuery(
+		timelinesKeyBuilder.single(router.query.tid as string),
+		timelineQuery
+	)
 	const eventlist = useSupabaseQuery(['events', router.query.tid], eventListQuery)
 
 	if (timeline.isLoading) return <LoadingSpinner />
@@ -40,7 +44,11 @@ export default function Timeline() {
 			<div className='flex items-center justify-between'>
 				<div>
 					<h1 className='font-heading text-4xl'>
-						<Autosave.String query={timelineQuery} queryKey={['timelines']} field='name' />
+						<Autosave.String
+							query={timelineQuery}
+							queryKey={timelinesKeyBuilder.single(router.query.tid as string)}
+							field='name'
+						/>
 					</h1>
 					<div className='px-2'>Starting date: {startdate}</div>
 				</div>
@@ -49,7 +57,7 @@ export default function Timeline() {
 			<h2 className='mt-10 text-3xl'>Overview</h2>
 			<RichtextWrapper
 				query={timelineQuery}
-				queryKey={['timelines', router.query.tid]}
+				queryKey={timelinesKeyBuilder.single(router.query.tid as string)}
 				field='overview'
 				toolbarVisible
 			/>

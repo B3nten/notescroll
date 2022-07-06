@@ -11,6 +11,7 @@ export const notesKeyBuilder = {
 	single: (id: string) => [notesKeyBuilder.all(), id] as const,
 }
 
+
 export function useNoteList(campaign_id: string) {
 	const client = useQueryClient()
 	const invalidate = () => client.invalidateQueries(notesKeyBuilder.list(campaign_id))
@@ -28,7 +29,7 @@ export function useSingleNote(id: string) {
 	const invalidate = () => client.invalidateQueries(notesKeyBuilder.single(id))
 	const query = useSupabaseQuery(
 		notesKeyBuilder.single(id),
-		supabase.from<definitions['documents']>('documents').select('*').eq('id', id)
+		supabase.from<definitions['documents']>('documents').select('*').eq('id', id).single()
 	)
 	return { ...query, invalidate }
 }

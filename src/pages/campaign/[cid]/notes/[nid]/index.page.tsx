@@ -6,6 +6,7 @@ import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
 import { RichtextWrapper } from '@/modules/tiptap/wrappers/RichtextWrapper'
 import * as Autosave from '@/modules/autosave'
 import { definitions } from '@/types/database'
+import { notesKeyBuilder, useSingleNote } from '@/common/hooks/queries/notes'
 
 export default function Note() {
 	const router = useClientRouter()
@@ -14,12 +15,16 @@ export default function Note() {
 		.select('*')
 		.eq('id', router.query.nid as string)
 		.single()
-	const note = useSupabaseQuery(['notes', router.query.nid], query)
+	const note = useSingleNote(router.query.nid as string)
 	return (
 		<>
 			<div className='flex items-center justify-between'>
 				<h1 className='font-heading text-4xl'>
-					<Autosave.String query={query} field='name' queryKey={['note', router.query.nid]} />
+					<Autosave.String
+						query={query}
+						field='name'
+						queryKey={notesKeyBuilder.single(router.query.nid as string)}
+					/>
 				</h1>
 				<Menu />
 			</div>
@@ -32,7 +37,7 @@ export default function Note() {
 				<p>Last updated: {new Date(note.data?.updated_at || 0).toString()}</p>
 			</div>
 			<RichtextWrapper
-				queryKey={['note', router.query.nid]}
+				queryKey={notesKeyBuilder.single(router.query.nid as string)}
 				field='overview'
 				query={query}
 				toolbarVisible

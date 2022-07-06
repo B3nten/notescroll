@@ -18,7 +18,7 @@ export function useTimelineList(campaign_id: string) {
 		timelinesKeyBuilder.list(campaign_id),
 		supabase
 			.from<definitions['timelines']>('timelines')
-			.select('name, type, id, created_at, updated_at')
+			.select('name, id')
 			.eq('campaign_id', campaign_id)
 	)
 	return { ...query, invalidate }

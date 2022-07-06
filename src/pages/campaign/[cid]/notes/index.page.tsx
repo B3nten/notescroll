@@ -2,19 +2,11 @@ import { LoadingSpinner } from '@/common/components/loading'
 import { pluralizeType } from '@/common/functions/pluralizeType'
 import { notesKeyBuilder, useNoteList } from '@/common/hooks/queries/notes'
 import { useClientRouter } from '@/common/hooks/useClientRouter'
-import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
 import supabase from '@/modules/supabase'
 import Link from 'next/link'
 import { useQueryClient } from 'react-query'
 import { Layout } from '../layout'
 import { AddNote } from './AddNote'
-
-type NoteList = {
-	name: string
-	type: string
-	id: string
-	campaign_id: string
-}
 
 export default function Notes() {
 	const router = useClientRouter()

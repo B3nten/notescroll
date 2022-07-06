@@ -17,7 +17,7 @@ export function useEventList(timeline_id: string) {
 	const invalidate = () => client.invalidateQueries(eventsKeyBuilder.list(timeline_id))
 	const query = useSupabaseQuery(
 		eventsKeyBuilder.list(timeline_id),
-		supabase.from<definitions['events']>('events').select('id').eq('campaign_id', timeline_id)
+		supabase.from<definitions['events']>('events').select('id').eq('timeline_id', timeline_id)
 	)
 	return { ...query, invalidate }
 }

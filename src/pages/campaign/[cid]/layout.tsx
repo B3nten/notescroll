@@ -21,9 +21,39 @@ import { Loading, LoadingSpinner } from '@/common/components/loading'
 import { useSpotlight } from '@mantine/spotlight'
 import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
 import { definitions } from '@/types/database'
+import { useQueryClient } from 'react-query'
+import { notesKeyBuilder } from '@/common/hooks/queries/notes'
+import { timelinesKeyBuilder } from '@/common/hooks/queries/timelines'
 
 export function Layout(props: any) {
 	const router = useClientRouter()
+	const queryClient = useQueryClient()
+	useEffect(() => {
+		async function preload() {
+			await queryClient.prefetchQuery(
+				notesKeyBuilder.list(router.query.cid as string),
+				async () => {
+					const { data, error } = await supabase.from('documents').select('name, id, type')
+					if (error) throw error
+					return data
+				}
+			)
+		}
+		preload()
+	}, [])
+	useEffect(() => {
+		async function preload() {
+			await queryClient.prefetchQuery(
+				timelinesKeyBuilder.list(router.query.cid as string),
+				async () => {
+					const { data, error } = await supabase.from('timelines').select('name, id')
+					if (error) throw error
+					return data
+				}
+			)
+		}
+		preload()
+	}, [])
 	const campaign = useSupabaseQuery(
 		['campaign', router.query.cid],
 		supabase
@@ -165,12 +195,14 @@ export function Layout(props: any) {
 	else return <div>cannot find campaign</div>
 }
 
-function NavComponent({ name, href, hover, icon }: any) {
+function NavComponent({ name, href, hover, icon, onHover }: any) {
 	const router = useClientRouter()
 	const url = href.replace('[cid]', router.query.cid)
 	return (
 		<Link href={url}>
-			<a className='py-2 px-2 lg:py-4 lg:px-8 flex items-end space-x-2 hover:bg-base-300 transition rounded-md'>
+			<a
+				onMouseEnter={onHover}
+				className='py-2 px-2 lg:py-4 lg:px-8 flex items-end space-x-2 hover:bg-base-300 transition rounded-md'>
 				{cloneElement(icon, {
 					className: `w-8 h-8 ${url === router.asPath && 'fill-primary stroke-primary'}`,
 				})}
