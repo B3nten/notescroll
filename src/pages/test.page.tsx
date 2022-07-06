@@ -2,7 +2,6 @@ import { RichtextWrapper } from '@/modules/tiptap/wrappers/RichtextWrapper'
 import supabase from '@/modules/supabase'
 import { definitions } from '@/types/database'
 import * as Autosave from '@/modules/autosave'
-import { keyBuilder, useNoteList } from '@/common/hooks/queries/notes'
 import { useClientRouter } from '@/common/hooks/useClientRouter'
 export default function Test() {
 	const router = useClientRouter()
