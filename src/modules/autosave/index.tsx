@@ -34,6 +34,7 @@ export function String({ inputClassName, query, field, queryKey }: Autosave) {
 				.update({ [column]: value })
 				.eq('id', content.data?.id)
 			if (error) throw error
+			
 			return data
 		},
 		{

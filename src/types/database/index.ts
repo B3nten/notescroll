@@ -4,2249 +4,2256 @@
  */
 
 export interface paths {
-  "/": {
-    get: {
-      responses: {
-        /** OK */
-        200: unknown;
-      };
-    };
-  };
-  "/campaigns": {
-    get: {
-      parameters: {
-        query: {
-          campaign_id?: parameters["rowFilter.campaigns.campaign_id"];
-          user_id?: parameters["rowFilter.campaigns.user_id"];
-          created_at?: parameters["rowFilter.campaigns.created_at"];
-          name?: parameters["rowFilter.campaigns.name"];
-          description?: parameters["rowFilter.campaigns.description"];
-          toolbar?: parameters["rowFilter.campaigns.toolbar"];
-          setting?: parameters["rowFilter.campaigns.setting"];
-          startdate?: parameters["rowFilter.campaigns.startdate"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["campaigns"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** campaigns */
-          campaigns?: definitions["campaigns"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          campaign_id?: parameters["rowFilter.campaigns.campaign_id"];
-          user_id?: parameters["rowFilter.campaigns.user_id"];
-          created_at?: parameters["rowFilter.campaigns.created_at"];
-          name?: parameters["rowFilter.campaigns.name"];
-          description?: parameters["rowFilter.campaigns.description"];
-          toolbar?: parameters["rowFilter.campaigns.toolbar"];
-          setting?: parameters["rowFilter.campaigns.setting"];
-          startdate?: parameters["rowFilter.campaigns.startdate"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          campaign_id?: parameters["rowFilter.campaigns.campaign_id"];
-          user_id?: parameters["rowFilter.campaigns.user_id"];
-          created_at?: parameters["rowFilter.campaigns.created_at"];
-          name?: parameters["rowFilter.campaigns.name"];
-          description?: parameters["rowFilter.campaigns.description"];
-          toolbar?: parameters["rowFilter.campaigns.toolbar"];
-          setting?: parameters["rowFilter.campaigns.setting"];
-          startdate?: parameters["rowFilter.campaigns.startdate"];
-        };
-        body: {
-          /** campaigns */
-          campaigns?: definitions["campaigns"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/characters": {
-    get: {
-      parameters: {
-        query: {
-          user_id?: parameters["rowFilter.characters.user_id"];
-          campaign_id?: parameters["rowFilter.characters.campaign_id"];
-          created_at?: parameters["rowFilter.characters.created_at"];
-          updated_at?: parameters["rowFilter.characters.updated_at"];
-          name?: parameters["rowFilter.characters.name"];
-          bio?: parameters["rowFilter.characters.bio"];
-          type?: parameters["rowFilter.characters.type"];
-          race?: parameters["rowFilter.characters.race"];
-          class?: parameters["rowFilter.characters.class"];
-          level?: parameters["rowFilter.characters.level"];
-          bio_text?: parameters["rowFilter.characters.bio_text"];
-          character_id?: parameters["rowFilter.characters.character_id"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["characters"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** characters */
-          characters?: definitions["characters"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          user_id?: parameters["rowFilter.characters.user_id"];
-          campaign_id?: parameters["rowFilter.characters.campaign_id"];
-          created_at?: parameters["rowFilter.characters.created_at"];
-          updated_at?: parameters["rowFilter.characters.updated_at"];
-          name?: parameters["rowFilter.characters.name"];
-          bio?: parameters["rowFilter.characters.bio"];
-          type?: parameters["rowFilter.characters.type"];
-          race?: parameters["rowFilter.characters.race"];
-          class?: parameters["rowFilter.characters.class"];
-          level?: parameters["rowFilter.characters.level"];
-          bio_text?: parameters["rowFilter.characters.bio_text"];
-          character_id?: parameters["rowFilter.characters.character_id"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          user_id?: parameters["rowFilter.characters.user_id"];
-          campaign_id?: parameters["rowFilter.characters.campaign_id"];
-          created_at?: parameters["rowFilter.characters.created_at"];
-          updated_at?: parameters["rowFilter.characters.updated_at"];
-          name?: parameters["rowFilter.characters.name"];
-          bio?: parameters["rowFilter.characters.bio"];
-          type?: parameters["rowFilter.characters.type"];
-          race?: parameters["rowFilter.characters.race"];
-          class?: parameters["rowFilter.characters.class"];
-          level?: parameters["rowFilter.characters.level"];
-          bio_text?: parameters["rowFilter.characters.bio_text"];
-          character_id?: parameters["rowFilter.characters.character_id"];
-        };
-        body: {
-          /** characters */
-          characters?: definitions["characters"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/document_instances": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.document_instances.id"];
-          user_id?: parameters["rowFilter.document_instances.user_id"];
-          session_id?: parameters["rowFilter.document_instances.session_id"];
-          document_id?: parameters["rowFilter.document_instances.document_id"];
-          comment?: parameters["rowFilter.document_instances.comment"];
-          comment_plaintext?: parameters["rowFilter.document_instances.comment_plaintext"];
-          created_at?: parameters["rowFilter.document_instances.created_at"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["document_instances"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** document_instances */
-          document_instances?: definitions["document_instances"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.document_instances.id"];
-          user_id?: parameters["rowFilter.document_instances.user_id"];
-          session_id?: parameters["rowFilter.document_instances.session_id"];
-          document_id?: parameters["rowFilter.document_instances.document_id"];
-          comment?: parameters["rowFilter.document_instances.comment"];
-          comment_plaintext?: parameters["rowFilter.document_instances.comment_plaintext"];
-          created_at?: parameters["rowFilter.document_instances.created_at"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.document_instances.id"];
-          user_id?: parameters["rowFilter.document_instances.user_id"];
-          session_id?: parameters["rowFilter.document_instances.session_id"];
-          document_id?: parameters["rowFilter.document_instances.document_id"];
-          comment?: parameters["rowFilter.document_instances.comment"];
-          comment_plaintext?: parameters["rowFilter.document_instances.comment_plaintext"];
-          created_at?: parameters["rowFilter.document_instances.created_at"];
-        };
-        body: {
-          /** document_instances */
-          document_instances?: definitions["document_instances"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/documents": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.documents.id"];
-          user_id?: parameters["rowFilter.documents.user_id"];
-          campaign_id?: parameters["rowFilter.documents.campaign_id"];
-          created_at?: parameters["rowFilter.documents.created_at"];
-          updated_at?: parameters["rowFilter.documents.updated_at"];
-          name?: parameters["rowFilter.documents.name"];
-          overview?: parameters["rowFilter.documents.overview"];
-          overview_plaintext?: parameters["rowFilter.documents.overview_plaintext"];
-          type?: parameters["rowFilter.documents.type"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["documents"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** documents */
-          documents?: definitions["documents"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.documents.id"];
-          user_id?: parameters["rowFilter.documents.user_id"];
-          campaign_id?: parameters["rowFilter.documents.campaign_id"];
-          created_at?: parameters["rowFilter.documents.created_at"];
-          updated_at?: parameters["rowFilter.documents.updated_at"];
-          name?: parameters["rowFilter.documents.name"];
-          overview?: parameters["rowFilter.documents.overview"];
-          overview_plaintext?: parameters["rowFilter.documents.overview_plaintext"];
-          type?: parameters["rowFilter.documents.type"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.documents.id"];
-          user_id?: parameters["rowFilter.documents.user_id"];
-          campaign_id?: parameters["rowFilter.documents.campaign_id"];
-          created_at?: parameters["rowFilter.documents.created_at"];
-          updated_at?: parameters["rowFilter.documents.updated_at"];
-          name?: parameters["rowFilter.documents.name"];
-          overview?: parameters["rowFilter.documents.overview"];
-          overview_plaintext?: parameters["rowFilter.documents.overview_plaintext"];
-          type?: parameters["rowFilter.documents.type"];
-        };
-        body: {
-          /** documents */
-          documents?: definitions["documents"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/dreams": {
-    get: {
-      parameters: {
-        query: {
-          dream_id?: parameters["rowFilter.dreams.dream_id"];
-          user_id?: parameters["rowFilter.dreams.user_id"];
-          campaign_id?: parameters["rowFilter.dreams.campaign_id"];
-          created_at?: parameters["rowFilter.dreams.created_at"];
-          updated_at?: parameters["rowFilter.dreams.updated_at"];
-          title?: parameters["rowFilter.dreams.title"];
-          content?: parameters["rowFilter.dreams.content"];
-          content_text?: parameters["rowFilter.dreams.content_text"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["dreams"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** dreams */
-          dreams?: definitions["dreams"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          dream_id?: parameters["rowFilter.dreams.dream_id"];
-          user_id?: parameters["rowFilter.dreams.user_id"];
-          campaign_id?: parameters["rowFilter.dreams.campaign_id"];
-          created_at?: parameters["rowFilter.dreams.created_at"];
-          updated_at?: parameters["rowFilter.dreams.updated_at"];
-          title?: parameters["rowFilter.dreams.title"];
-          content?: parameters["rowFilter.dreams.content"];
-          content_text?: parameters["rowFilter.dreams.content_text"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          dream_id?: parameters["rowFilter.dreams.dream_id"];
-          user_id?: parameters["rowFilter.dreams.user_id"];
-          campaign_id?: parameters["rowFilter.dreams.campaign_id"];
-          created_at?: parameters["rowFilter.dreams.created_at"];
-          updated_at?: parameters["rowFilter.dreams.updated_at"];
-          title?: parameters["rowFilter.dreams.title"];
-          content?: parameters["rowFilter.dreams.content"];
-          content_text?: parameters["rowFilter.dreams.content_text"];
-        };
-        body: {
-          /** dreams */
-          dreams?: definitions["dreams"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/events": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.events.id"];
-          user_id?: parameters["rowFilter.events.user_id"];
-          timeline_id?: parameters["rowFilter.events.timeline_id"];
-          campaign_id?: parameters["rowFilter.events.campaign_id"];
-          name?: parameters["rowFilter.events.name"];
-          overview?: parameters["rowFilter.events.overview"];
-          overview_plaintext?: parameters["rowFilter.events.overview_plaintext"];
-          date?: parameters["rowFilter.events.date"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["events"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** events */
-          events?: definitions["events"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.events.id"];
-          user_id?: parameters["rowFilter.events.user_id"];
-          timeline_id?: parameters["rowFilter.events.timeline_id"];
-          campaign_id?: parameters["rowFilter.events.campaign_id"];
-          name?: parameters["rowFilter.events.name"];
-          overview?: parameters["rowFilter.events.overview"];
-          overview_plaintext?: parameters["rowFilter.events.overview_plaintext"];
-          date?: parameters["rowFilter.events.date"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.events.id"];
-          user_id?: parameters["rowFilter.events.user_id"];
-          timeline_id?: parameters["rowFilter.events.timeline_id"];
-          campaign_id?: parameters["rowFilter.events.campaign_id"];
-          name?: parameters["rowFilter.events.name"];
-          overview?: parameters["rowFilter.events.overview"];
-          overview_plaintext?: parameters["rowFilter.events.overview_plaintext"];
-          date?: parameters["rowFilter.events.date"];
-        };
-        body: {
-          /** events */
-          events?: definitions["events"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/items": {
-    get: {
-      parameters: {
-        query: {
-          item_id?: parameters["rowFilter.items.item_id"];
-          user_id?: parameters["rowFilter.items.user_id"];
-          campaign_id?: parameters["rowFilter.items.campaign_id"];
-          created_at?: parameters["rowFilter.items.created_at"];
-          updated_at?: parameters["rowFilter.items.updated_at"];
-          name?: parameters["rowFilter.items.name"];
-          description?: parameters["rowFilter.items.description"];
-          description_text?: parameters["rowFilter.items.description_text"];
-          price?: parameters["rowFilter.items.price"];
-          weight?: parameters["rowFilter.items.weight"];
-          magical?: parameters["rowFilter.items.magical"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["items"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** items */
-          items?: definitions["items"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          item_id?: parameters["rowFilter.items.item_id"];
-          user_id?: parameters["rowFilter.items.user_id"];
-          campaign_id?: parameters["rowFilter.items.campaign_id"];
-          created_at?: parameters["rowFilter.items.created_at"];
-          updated_at?: parameters["rowFilter.items.updated_at"];
-          name?: parameters["rowFilter.items.name"];
-          description?: parameters["rowFilter.items.description"];
-          description_text?: parameters["rowFilter.items.description_text"];
-          price?: parameters["rowFilter.items.price"];
-          weight?: parameters["rowFilter.items.weight"];
-          magical?: parameters["rowFilter.items.magical"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          item_id?: parameters["rowFilter.items.item_id"];
-          user_id?: parameters["rowFilter.items.user_id"];
-          campaign_id?: parameters["rowFilter.items.campaign_id"];
-          created_at?: parameters["rowFilter.items.created_at"];
-          updated_at?: parameters["rowFilter.items.updated_at"];
-          name?: parameters["rowFilter.items.name"];
-          description?: parameters["rowFilter.items.description"];
-          description_text?: parameters["rowFilter.items.description_text"];
-          price?: parameters["rowFilter.items.price"];
-          weight?: parameters["rowFilter.items.weight"];
-          magical?: parameters["rowFilter.items.magical"];
-        };
-        body: {
-          /** items */
-          items?: definitions["items"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/locations": {
-    get: {
-      parameters: {
-        query: {
-          location_id?: parameters["rowFilter.locations.location_id"];
-          user_id?: parameters["rowFilter.locations.user_id"];
-          campaign_id?: parameters["rowFilter.locations.campaign_id"];
-          created_at?: parameters["rowFilter.locations.created_at"];
-          updated_at?: parameters["rowFilter.locations.updated_at"];
-          name?: parameters["rowFilter.locations.name"];
-          description?: parameters["rowFilter.locations.description"];
-          description_text?: parameters["rowFilter.locations.description_text"];
-          dimension?: parameters["rowFilter.locations.dimension"];
-          world?: parameters["rowFilter.locations.world"];
-          continent?: parameters["rowFilter.locations.continent"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["locations"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** locations */
-          locations?: definitions["locations"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          location_id?: parameters["rowFilter.locations.location_id"];
-          user_id?: parameters["rowFilter.locations.user_id"];
-          campaign_id?: parameters["rowFilter.locations.campaign_id"];
-          created_at?: parameters["rowFilter.locations.created_at"];
-          updated_at?: parameters["rowFilter.locations.updated_at"];
-          name?: parameters["rowFilter.locations.name"];
-          description?: parameters["rowFilter.locations.description"];
-          description_text?: parameters["rowFilter.locations.description_text"];
-          dimension?: parameters["rowFilter.locations.dimension"];
-          world?: parameters["rowFilter.locations.world"];
-          continent?: parameters["rowFilter.locations.continent"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          location_id?: parameters["rowFilter.locations.location_id"];
-          user_id?: parameters["rowFilter.locations.user_id"];
-          campaign_id?: parameters["rowFilter.locations.campaign_id"];
-          created_at?: parameters["rowFilter.locations.created_at"];
-          updated_at?: parameters["rowFilter.locations.updated_at"];
-          name?: parameters["rowFilter.locations.name"];
-          description?: parameters["rowFilter.locations.description"];
-          description_text?: parameters["rowFilter.locations.description_text"];
-          dimension?: parameters["rowFilter.locations.dimension"];
-          world?: parameters["rowFilter.locations.world"];
-          continent?: parameters["rowFilter.locations.continent"];
-        };
-        body: {
-          /** locations */
-          locations?: definitions["locations"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/lore": {
-    get: {
-      parameters: {
-        query: {
-          lore_id?: parameters["rowFilter.lore.lore_id"];
-          user_id?: parameters["rowFilter.lore.user_id"];
-          campaign_id?: parameters["rowFilter.lore.campaign_id"];
-          created_at?: parameters["rowFilter.lore.created_at"];
-          updated_at?: parameters["rowFilter.lore.updated_at"];
-          title?: parameters["rowFilter.lore.title"];
-          description?: parameters["rowFilter.lore.description"];
-          description_text?: parameters["rowFilter.lore.description_text"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["lore"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** lore */
-          lore?: definitions["lore"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          lore_id?: parameters["rowFilter.lore.lore_id"];
-          user_id?: parameters["rowFilter.lore.user_id"];
-          campaign_id?: parameters["rowFilter.lore.campaign_id"];
-          created_at?: parameters["rowFilter.lore.created_at"];
-          updated_at?: parameters["rowFilter.lore.updated_at"];
-          title?: parameters["rowFilter.lore.title"];
-          description?: parameters["rowFilter.lore.description"];
-          description_text?: parameters["rowFilter.lore.description_text"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          lore_id?: parameters["rowFilter.lore.lore_id"];
-          user_id?: parameters["rowFilter.lore.user_id"];
-          campaign_id?: parameters["rowFilter.lore.campaign_id"];
-          created_at?: parameters["rowFilter.lore.created_at"];
-          updated_at?: parameters["rowFilter.lore.updated_at"];
-          title?: parameters["rowFilter.lore.title"];
-          description?: parameters["rowFilter.lore.description"];
-          description_text?: parameters["rowFilter.lore.description_text"];
-        };
-        body: {
-          /** lore */
-          lore?: definitions["lore"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/other": {
-    get: {
-      parameters: {
-        query: {
-          other_id?: parameters["rowFilter.other.other_id"];
-          user_id?: parameters["rowFilter.other.user_id"];
-          campaign_id?: parameters["rowFilter.other.campaign_id"];
-          created_at?: parameters["rowFilter.other.created_at"];
-          updated_at?: parameters["rowFilter.other.updated_at"];
-          title?: parameters["rowFilter.other.title"];
-          note?: parameters["rowFilter.other.note"];
-          note_text?: parameters["rowFilter.other.note_text"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["other"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** other */
-          other?: definitions["other"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          other_id?: parameters["rowFilter.other.other_id"];
-          user_id?: parameters["rowFilter.other.user_id"];
-          campaign_id?: parameters["rowFilter.other.campaign_id"];
-          created_at?: parameters["rowFilter.other.created_at"];
-          updated_at?: parameters["rowFilter.other.updated_at"];
-          title?: parameters["rowFilter.other.title"];
-          note?: parameters["rowFilter.other.note"];
-          note_text?: parameters["rowFilter.other.note_text"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          other_id?: parameters["rowFilter.other.other_id"];
-          user_id?: parameters["rowFilter.other.user_id"];
-          campaign_id?: parameters["rowFilter.other.campaign_id"];
-          created_at?: parameters["rowFilter.other.created_at"];
-          updated_at?: parameters["rowFilter.other.updated_at"];
-          title?: parameters["rowFilter.other.title"];
-          note?: parameters["rowFilter.other.note"];
-          note_text?: parameters["rowFilter.other.note_text"];
-        };
-        body: {
-          /** other */
-          other?: definitions["other"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/profile": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profile.id"];
-          display_name?: parameters["rowFilter.profile.display_name"];
-          email?: parameters["rowFilter.profile.email"];
-          theme?: parameters["rowFilter.profile.theme"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["profile"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** profile */
-          profile?: definitions["profile"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profile.id"];
-          display_name?: parameters["rowFilter.profile.display_name"];
-          email?: parameters["rowFilter.profile.email"];
-          theme?: parameters["rowFilter.profile.theme"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.profile.id"];
-          display_name?: parameters["rowFilter.profile.display_name"];
-          email?: parameters["rowFilter.profile.email"];
-          theme?: parameters["rowFilter.profile.theme"];
-        };
-        body: {
-          /** profile */
-          profile?: definitions["profile"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/sessions": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.sessions.id"];
-          user_id?: parameters["rowFilter.sessions.user_id"];
-          campaign_id?: parameters["rowFilter.sessions.campaign_id"];
-          /** Ordering */
-          order?: parameters["order"];
-          updated_at?: parameters["rowFilter.sessions.updated_at"];
-          number?: parameters["rowFilter.sessions.number"];
-          overview?: parameters["rowFilter.sessions.overview"];
-          overview_plaintext?: parameters["rowFilter.sessions.overview_plaintext"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["sessions"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** sessions */
-          sessions?: definitions["sessions"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.sessions.id"];
-          user_id?: parameters["rowFilter.sessions.user_id"];
-          campaign_id?: parameters["rowFilter.sessions.campaign_id"];
-          order?: parameters["rowFilter.sessions.order"];
-          updated_at?: parameters["rowFilter.sessions.updated_at"];
-          number?: parameters["rowFilter.sessions.number"];
-          overview?: parameters["rowFilter.sessions.overview"];
-          overview_plaintext?: parameters["rowFilter.sessions.overview_plaintext"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.sessions.id"];
-          user_id?: parameters["rowFilter.sessions.user_id"];
-          campaign_id?: parameters["rowFilter.sessions.campaign_id"];
-          order?: parameters["rowFilter.sessions.order"];
-          updated_at?: parameters["rowFilter.sessions.updated_at"];
-          number?: parameters["rowFilter.sessions.number"];
-          overview?: parameters["rowFilter.sessions.overview"];
-          overview_plaintext?: parameters["rowFilter.sessions.overview_plaintext"];
-        };
-        body: {
-          /** sessions */
-          sessions?: definitions["sessions"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/timelines": {
-    get: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.timelines.id"];
-          user_id?: parameters["rowFilter.timelines.user_id"];
-          campaign_id?: parameters["rowFilter.timelines.campaign_id"];
-          name?: parameters["rowFilter.timelines.name"];
-          startdate?: parameters["rowFilter.timelines.startdate"];
-          overview?: parameters["rowFilter.timelines.overview"];
-          overview_plaintext?: parameters["rowFilter.timelines.overview_plaintext"];
-          updated_at?: parameters["rowFilter.timelines.updated_at"];
-          /** Filtering Columns */
-          select?: parameters["select"];
-          /** Ordering */
-          order?: parameters["order"];
-          /** Limiting and Pagination */
-          offset?: parameters["offset"];
-          /** Limiting and Pagination */
-          limit?: parameters["limit"];
-        };
-        header: {
-          /** Limiting and Pagination */
-          Range?: parameters["range"];
-          /** Limiting and Pagination */
-          "Range-Unit"?: parameters["rangeUnit"];
-          /** Preference */
-          Prefer?: parameters["preferCount"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: {
-          schema: definitions["timelines"][];
-        };
-        /** Partial Content */
-        206: unknown;
-      };
-    };
-    post: {
-      parameters: {
-        body: {
-          /** timelines */
-          timelines?: definitions["timelines"];
-        };
-        query: {
-          /** Filtering Columns */
-          select?: parameters["select"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** Created */
-        201: unknown;
-      };
-    };
-    delete: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.timelines.id"];
-          user_id?: parameters["rowFilter.timelines.user_id"];
-          campaign_id?: parameters["rowFilter.timelines.campaign_id"];
-          name?: parameters["rowFilter.timelines.name"];
-          startdate?: parameters["rowFilter.timelines.startdate"];
-          overview?: parameters["rowFilter.timelines.overview"];
-          overview_plaintext?: parameters["rowFilter.timelines.overview_plaintext"];
-          updated_at?: parameters["rowFilter.timelines.updated_at"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-    patch: {
-      parameters: {
-        query: {
-          id?: parameters["rowFilter.timelines.id"];
-          user_id?: parameters["rowFilter.timelines.user_id"];
-          campaign_id?: parameters["rowFilter.timelines.campaign_id"];
-          name?: parameters["rowFilter.timelines.name"];
-          startdate?: parameters["rowFilter.timelines.startdate"];
-          overview?: parameters["rowFilter.timelines.overview"];
-          overview_plaintext?: parameters["rowFilter.timelines.overview_plaintext"];
-          updated_at?: parameters["rowFilter.timelines.updated_at"];
-        };
-        body: {
-          /** timelines */
-          timelines?: definitions["timelines"];
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferReturn"];
-        };
-      };
-      responses: {
-        /** No Content */
-        204: never;
-      };
-    };
-  };
-  "/rpc/search_documents": {
-    post: {
-      parameters: {
-        body: {
-          args: {
-            /** Format: character varying */
-            document_term: string;
-          };
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferParams"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: unknown;
-      };
-    };
-  };
-  "/rpc/show_limit": {
-    post: {
-      parameters: {
-        body: {
-          args: { [key: string]: unknown };
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferParams"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: unknown;
-      };
-    };
-  };
-  "/rpc/show_trgm": {
-    post: {
-      parameters: {
-        body: {
-          args: {
-            /** Format: text */
-            "": string;
-          };
-        };
-        header: {
-          /** Preference */
-          Prefer?: parameters["preferParams"];
-        };
-      };
-      responses: {
-        /** OK */
-        200: unknown;
-      };
-    };
-  };
+	'/': {
+		get: {
+			responses: {
+				/** OK */
+				200: unknown
+			}
+		}
+	}
+	'/campaigns': {
+		get: {
+			parameters: {
+				query: {
+					campaign_id?: parameters['rowFilter.campaigns.campaign_id']
+					user_id?: parameters['rowFilter.campaigns.user_id']
+					created_at?: parameters['rowFilter.campaigns.created_at']
+					name?: parameters['rowFilter.campaigns.name']
+					description?: parameters['rowFilter.campaigns.description']
+					toolbar?: parameters['rowFilter.campaigns.toolbar']
+					setting?: parameters['rowFilter.campaigns.setting']
+					startdate?: parameters['rowFilter.campaigns.startdate']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['campaigns'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** campaigns */
+					campaigns?: definitions['campaigns']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					campaign_id?: parameters['rowFilter.campaigns.campaign_id']
+					user_id?: parameters['rowFilter.campaigns.user_id']
+					created_at?: parameters['rowFilter.campaigns.created_at']
+					name?: parameters['rowFilter.campaigns.name']
+					description?: parameters['rowFilter.campaigns.description']
+					toolbar?: parameters['rowFilter.campaigns.toolbar']
+					setting?: parameters['rowFilter.campaigns.setting']
+					startdate?: parameters['rowFilter.campaigns.startdate']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					campaign_id?: parameters['rowFilter.campaigns.campaign_id']
+					user_id?: parameters['rowFilter.campaigns.user_id']
+					created_at?: parameters['rowFilter.campaigns.created_at']
+					name?: parameters['rowFilter.campaigns.name']
+					description?: parameters['rowFilter.campaigns.description']
+					toolbar?: parameters['rowFilter.campaigns.toolbar']
+					setting?: parameters['rowFilter.campaigns.setting']
+					startdate?: parameters['rowFilter.campaigns.startdate']
+				}
+				body: {
+					/** campaigns */
+					campaigns?: definitions['campaigns']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/characters': {
+		get: {
+			parameters: {
+				query: {
+					user_id?: parameters['rowFilter.characters.user_id']
+					campaign_id?: parameters['rowFilter.characters.campaign_id']
+					created_at?: parameters['rowFilter.characters.created_at']
+					updated_at?: parameters['rowFilter.characters.updated_at']
+					name?: parameters['rowFilter.characters.name']
+					bio?: parameters['rowFilter.characters.bio']
+					type?: parameters['rowFilter.characters.type']
+					race?: parameters['rowFilter.characters.race']
+					class?: parameters['rowFilter.characters.class']
+					level?: parameters['rowFilter.characters.level']
+					bio_text?: parameters['rowFilter.characters.bio_text']
+					character_id?: parameters['rowFilter.characters.character_id']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['characters'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** characters */
+					characters?: definitions['characters']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					user_id?: parameters['rowFilter.characters.user_id']
+					campaign_id?: parameters['rowFilter.characters.campaign_id']
+					created_at?: parameters['rowFilter.characters.created_at']
+					updated_at?: parameters['rowFilter.characters.updated_at']
+					name?: parameters['rowFilter.characters.name']
+					bio?: parameters['rowFilter.characters.bio']
+					type?: parameters['rowFilter.characters.type']
+					race?: parameters['rowFilter.characters.race']
+					class?: parameters['rowFilter.characters.class']
+					level?: parameters['rowFilter.characters.level']
+					bio_text?: parameters['rowFilter.characters.bio_text']
+					character_id?: parameters['rowFilter.characters.character_id']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					user_id?: parameters['rowFilter.characters.user_id']
+					campaign_id?: parameters['rowFilter.characters.campaign_id']
+					created_at?: parameters['rowFilter.characters.created_at']
+					updated_at?: parameters['rowFilter.characters.updated_at']
+					name?: parameters['rowFilter.characters.name']
+					bio?: parameters['rowFilter.characters.bio']
+					type?: parameters['rowFilter.characters.type']
+					race?: parameters['rowFilter.characters.race']
+					class?: parameters['rowFilter.characters.class']
+					level?: parameters['rowFilter.characters.level']
+					bio_text?: parameters['rowFilter.characters.bio_text']
+					character_id?: parameters['rowFilter.characters.character_id']
+				}
+				body: {
+					/** characters */
+					characters?: definitions['characters']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/document_instances': {
+		get: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.document_instances.id']
+					user_id?: parameters['rowFilter.document_instances.user_id']
+					session_id?: parameters['rowFilter.document_instances.session_id']
+					document_id?: parameters['rowFilter.document_instances.document_id']
+					comment?: parameters['rowFilter.document_instances.comment']
+					comment_plaintext?: parameters['rowFilter.document_instances.comment_plaintext']
+					created_at?: parameters['rowFilter.document_instances.created_at']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['document_instances'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** document_instances */
+					document_instances?: definitions['document_instances']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.document_instances.id']
+					user_id?: parameters['rowFilter.document_instances.user_id']
+					session_id?: parameters['rowFilter.document_instances.session_id']
+					document_id?: parameters['rowFilter.document_instances.document_id']
+					comment?: parameters['rowFilter.document_instances.comment']
+					comment_plaintext?: parameters['rowFilter.document_instances.comment_plaintext']
+					created_at?: parameters['rowFilter.document_instances.created_at']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.document_instances.id']
+					user_id?: parameters['rowFilter.document_instances.user_id']
+					session_id?: parameters['rowFilter.document_instances.session_id']
+					document_id?: parameters['rowFilter.document_instances.document_id']
+					comment?: parameters['rowFilter.document_instances.comment']
+					comment_plaintext?: parameters['rowFilter.document_instances.comment_plaintext']
+					created_at?: parameters['rowFilter.document_instances.created_at']
+				}
+				body: {
+					/** document_instances */
+					document_instances?: definitions['document_instances']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/documents': {
+		get: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.documents.id']
+					user_id?: parameters['rowFilter.documents.user_id']
+					campaign_id?: parameters['rowFilter.documents.campaign_id']
+					created_at?: parameters['rowFilter.documents.created_at']
+					updated_at?: parameters['rowFilter.documents.updated_at']
+					name?: parameters['rowFilter.documents.name']
+					overview?: parameters['rowFilter.documents.overview']
+					overview_plaintext?: parameters['rowFilter.documents.overview_plaintext']
+					type?: parameters['rowFilter.documents.type']
+					tags?: parameters['rowFilter.documents.tags']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['documents'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** documents */
+					documents?: definitions['documents']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.documents.id']
+					user_id?: parameters['rowFilter.documents.user_id']
+					campaign_id?: parameters['rowFilter.documents.campaign_id']
+					created_at?: parameters['rowFilter.documents.created_at']
+					updated_at?: parameters['rowFilter.documents.updated_at']
+					name?: parameters['rowFilter.documents.name']
+					overview?: parameters['rowFilter.documents.overview']
+					overview_plaintext?: parameters['rowFilter.documents.overview_plaintext']
+					type?: parameters['rowFilter.documents.type']
+					tags?: parameters['rowFilter.documents.tags']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.documents.id']
+					user_id?: parameters['rowFilter.documents.user_id']
+					campaign_id?: parameters['rowFilter.documents.campaign_id']
+					created_at?: parameters['rowFilter.documents.created_at']
+					updated_at?: parameters['rowFilter.documents.updated_at']
+					name?: parameters['rowFilter.documents.name']
+					overview?: parameters['rowFilter.documents.overview']
+					overview_plaintext?: parameters['rowFilter.documents.overview_plaintext']
+					type?: parameters['rowFilter.documents.type']
+					tags?: parameters['rowFilter.documents.tags']
+				}
+				body: {
+					/** documents */
+					documents?: definitions['documents']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/dreams': {
+		get: {
+			parameters: {
+				query: {
+					dream_id?: parameters['rowFilter.dreams.dream_id']
+					user_id?: parameters['rowFilter.dreams.user_id']
+					campaign_id?: parameters['rowFilter.dreams.campaign_id']
+					created_at?: parameters['rowFilter.dreams.created_at']
+					updated_at?: parameters['rowFilter.dreams.updated_at']
+					title?: parameters['rowFilter.dreams.title']
+					content?: parameters['rowFilter.dreams.content']
+					content_text?: parameters['rowFilter.dreams.content_text']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['dreams'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** dreams */
+					dreams?: definitions['dreams']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					dream_id?: parameters['rowFilter.dreams.dream_id']
+					user_id?: parameters['rowFilter.dreams.user_id']
+					campaign_id?: parameters['rowFilter.dreams.campaign_id']
+					created_at?: parameters['rowFilter.dreams.created_at']
+					updated_at?: parameters['rowFilter.dreams.updated_at']
+					title?: parameters['rowFilter.dreams.title']
+					content?: parameters['rowFilter.dreams.content']
+					content_text?: parameters['rowFilter.dreams.content_text']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					dream_id?: parameters['rowFilter.dreams.dream_id']
+					user_id?: parameters['rowFilter.dreams.user_id']
+					campaign_id?: parameters['rowFilter.dreams.campaign_id']
+					created_at?: parameters['rowFilter.dreams.created_at']
+					updated_at?: parameters['rowFilter.dreams.updated_at']
+					title?: parameters['rowFilter.dreams.title']
+					content?: parameters['rowFilter.dreams.content']
+					content_text?: parameters['rowFilter.dreams.content_text']
+				}
+				body: {
+					/** dreams */
+					dreams?: definitions['dreams']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/events': {
+		get: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.events.id']
+					user_id?: parameters['rowFilter.events.user_id']
+					timeline_id?: parameters['rowFilter.events.timeline_id']
+					campaign_id?: parameters['rowFilter.events.campaign_id']
+					name?: parameters['rowFilter.events.name']
+					overview?: parameters['rowFilter.events.overview']
+					overview_plaintext?: parameters['rowFilter.events.overview_plaintext']
+					date?: parameters['rowFilter.events.date']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['events'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** events */
+					events?: definitions['events']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.events.id']
+					user_id?: parameters['rowFilter.events.user_id']
+					timeline_id?: parameters['rowFilter.events.timeline_id']
+					campaign_id?: parameters['rowFilter.events.campaign_id']
+					name?: parameters['rowFilter.events.name']
+					overview?: parameters['rowFilter.events.overview']
+					overview_plaintext?: parameters['rowFilter.events.overview_plaintext']
+					date?: parameters['rowFilter.events.date']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.events.id']
+					user_id?: parameters['rowFilter.events.user_id']
+					timeline_id?: parameters['rowFilter.events.timeline_id']
+					campaign_id?: parameters['rowFilter.events.campaign_id']
+					name?: parameters['rowFilter.events.name']
+					overview?: parameters['rowFilter.events.overview']
+					overview_plaintext?: parameters['rowFilter.events.overview_plaintext']
+					date?: parameters['rowFilter.events.date']
+				}
+				body: {
+					/** events */
+					events?: definitions['events']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/items': {
+		get: {
+			parameters: {
+				query: {
+					item_id?: parameters['rowFilter.items.item_id']
+					user_id?: parameters['rowFilter.items.user_id']
+					campaign_id?: parameters['rowFilter.items.campaign_id']
+					created_at?: parameters['rowFilter.items.created_at']
+					updated_at?: parameters['rowFilter.items.updated_at']
+					name?: parameters['rowFilter.items.name']
+					description?: parameters['rowFilter.items.description']
+					description_text?: parameters['rowFilter.items.description_text']
+					price?: parameters['rowFilter.items.price']
+					weight?: parameters['rowFilter.items.weight']
+					magical?: parameters['rowFilter.items.magical']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['items'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** items */
+					items?: definitions['items']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					item_id?: parameters['rowFilter.items.item_id']
+					user_id?: parameters['rowFilter.items.user_id']
+					campaign_id?: parameters['rowFilter.items.campaign_id']
+					created_at?: parameters['rowFilter.items.created_at']
+					updated_at?: parameters['rowFilter.items.updated_at']
+					name?: parameters['rowFilter.items.name']
+					description?: parameters['rowFilter.items.description']
+					description_text?: parameters['rowFilter.items.description_text']
+					price?: parameters['rowFilter.items.price']
+					weight?: parameters['rowFilter.items.weight']
+					magical?: parameters['rowFilter.items.magical']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					item_id?: parameters['rowFilter.items.item_id']
+					user_id?: parameters['rowFilter.items.user_id']
+					campaign_id?: parameters['rowFilter.items.campaign_id']
+					created_at?: parameters['rowFilter.items.created_at']
+					updated_at?: parameters['rowFilter.items.updated_at']
+					name?: parameters['rowFilter.items.name']
+					description?: parameters['rowFilter.items.description']
+					description_text?: parameters['rowFilter.items.description_text']
+					price?: parameters['rowFilter.items.price']
+					weight?: parameters['rowFilter.items.weight']
+					magical?: parameters['rowFilter.items.magical']
+				}
+				body: {
+					/** items */
+					items?: definitions['items']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/locations': {
+		get: {
+			parameters: {
+				query: {
+					location_id?: parameters['rowFilter.locations.location_id']
+					user_id?: parameters['rowFilter.locations.user_id']
+					campaign_id?: parameters['rowFilter.locations.campaign_id']
+					created_at?: parameters['rowFilter.locations.created_at']
+					updated_at?: parameters['rowFilter.locations.updated_at']
+					name?: parameters['rowFilter.locations.name']
+					description?: parameters['rowFilter.locations.description']
+					description_text?: parameters['rowFilter.locations.description_text']
+					dimension?: parameters['rowFilter.locations.dimension']
+					world?: parameters['rowFilter.locations.world']
+					continent?: parameters['rowFilter.locations.continent']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['locations'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** locations */
+					locations?: definitions['locations']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					location_id?: parameters['rowFilter.locations.location_id']
+					user_id?: parameters['rowFilter.locations.user_id']
+					campaign_id?: parameters['rowFilter.locations.campaign_id']
+					created_at?: parameters['rowFilter.locations.created_at']
+					updated_at?: parameters['rowFilter.locations.updated_at']
+					name?: parameters['rowFilter.locations.name']
+					description?: parameters['rowFilter.locations.description']
+					description_text?: parameters['rowFilter.locations.description_text']
+					dimension?: parameters['rowFilter.locations.dimension']
+					world?: parameters['rowFilter.locations.world']
+					continent?: parameters['rowFilter.locations.continent']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					location_id?: parameters['rowFilter.locations.location_id']
+					user_id?: parameters['rowFilter.locations.user_id']
+					campaign_id?: parameters['rowFilter.locations.campaign_id']
+					created_at?: parameters['rowFilter.locations.created_at']
+					updated_at?: parameters['rowFilter.locations.updated_at']
+					name?: parameters['rowFilter.locations.name']
+					description?: parameters['rowFilter.locations.description']
+					description_text?: parameters['rowFilter.locations.description_text']
+					dimension?: parameters['rowFilter.locations.dimension']
+					world?: parameters['rowFilter.locations.world']
+					continent?: parameters['rowFilter.locations.continent']
+				}
+				body: {
+					/** locations */
+					locations?: definitions['locations']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/lore': {
+		get: {
+			parameters: {
+				query: {
+					lore_id?: parameters['rowFilter.lore.lore_id']
+					user_id?: parameters['rowFilter.lore.user_id']
+					campaign_id?: parameters['rowFilter.lore.campaign_id']
+					created_at?: parameters['rowFilter.lore.created_at']
+					updated_at?: parameters['rowFilter.lore.updated_at']
+					title?: parameters['rowFilter.lore.title']
+					description?: parameters['rowFilter.lore.description']
+					description_text?: parameters['rowFilter.lore.description_text']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['lore'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** lore */
+					lore?: definitions['lore']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					lore_id?: parameters['rowFilter.lore.lore_id']
+					user_id?: parameters['rowFilter.lore.user_id']
+					campaign_id?: parameters['rowFilter.lore.campaign_id']
+					created_at?: parameters['rowFilter.lore.created_at']
+					updated_at?: parameters['rowFilter.lore.updated_at']
+					title?: parameters['rowFilter.lore.title']
+					description?: parameters['rowFilter.lore.description']
+					description_text?: parameters['rowFilter.lore.description_text']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					lore_id?: parameters['rowFilter.lore.lore_id']
+					user_id?: parameters['rowFilter.lore.user_id']
+					campaign_id?: parameters['rowFilter.lore.campaign_id']
+					created_at?: parameters['rowFilter.lore.created_at']
+					updated_at?: parameters['rowFilter.lore.updated_at']
+					title?: parameters['rowFilter.lore.title']
+					description?: parameters['rowFilter.lore.description']
+					description_text?: parameters['rowFilter.lore.description_text']
+				}
+				body: {
+					/** lore */
+					lore?: definitions['lore']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/other': {
+		get: {
+			parameters: {
+				query: {
+					other_id?: parameters['rowFilter.other.other_id']
+					user_id?: parameters['rowFilter.other.user_id']
+					campaign_id?: parameters['rowFilter.other.campaign_id']
+					created_at?: parameters['rowFilter.other.created_at']
+					updated_at?: parameters['rowFilter.other.updated_at']
+					title?: parameters['rowFilter.other.title']
+					note?: parameters['rowFilter.other.note']
+					note_text?: parameters['rowFilter.other.note_text']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['other'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** other */
+					other?: definitions['other']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					other_id?: parameters['rowFilter.other.other_id']
+					user_id?: parameters['rowFilter.other.user_id']
+					campaign_id?: parameters['rowFilter.other.campaign_id']
+					created_at?: parameters['rowFilter.other.created_at']
+					updated_at?: parameters['rowFilter.other.updated_at']
+					title?: parameters['rowFilter.other.title']
+					note?: parameters['rowFilter.other.note']
+					note_text?: parameters['rowFilter.other.note_text']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					other_id?: parameters['rowFilter.other.other_id']
+					user_id?: parameters['rowFilter.other.user_id']
+					campaign_id?: parameters['rowFilter.other.campaign_id']
+					created_at?: parameters['rowFilter.other.created_at']
+					updated_at?: parameters['rowFilter.other.updated_at']
+					title?: parameters['rowFilter.other.title']
+					note?: parameters['rowFilter.other.note']
+					note_text?: parameters['rowFilter.other.note_text']
+				}
+				body: {
+					/** other */
+					other?: definitions['other']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/profile': {
+		get: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.profile.id']
+					display_name?: parameters['rowFilter.profile.display_name']
+					email?: parameters['rowFilter.profile.email']
+					theme?: parameters['rowFilter.profile.theme']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['profile'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** profile */
+					profile?: definitions['profile']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.profile.id']
+					display_name?: parameters['rowFilter.profile.display_name']
+					email?: parameters['rowFilter.profile.email']
+					theme?: parameters['rowFilter.profile.theme']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.profile.id']
+					display_name?: parameters['rowFilter.profile.display_name']
+					email?: parameters['rowFilter.profile.email']
+					theme?: parameters['rowFilter.profile.theme']
+				}
+				body: {
+					/** profile */
+					profile?: definitions['profile']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/sessions': {
+		get: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.sessions.id']
+					user_id?: parameters['rowFilter.sessions.user_id']
+					campaign_id?: parameters['rowFilter.sessions.campaign_id']
+					/** Ordering */
+					order?: parameters['order']
+					updated_at?: parameters['rowFilter.sessions.updated_at']
+					number?: parameters['rowFilter.sessions.number']
+					overview?: parameters['rowFilter.sessions.overview']
+					overview_plaintext?: parameters['rowFilter.sessions.overview_plaintext']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['sessions'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** sessions */
+					sessions?: definitions['sessions']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.sessions.id']
+					user_id?: parameters['rowFilter.sessions.user_id']
+					campaign_id?: parameters['rowFilter.sessions.campaign_id']
+					order?: parameters['rowFilter.sessions.order']
+					updated_at?: parameters['rowFilter.sessions.updated_at']
+					number?: parameters['rowFilter.sessions.number']
+					overview?: parameters['rowFilter.sessions.overview']
+					overview_plaintext?: parameters['rowFilter.sessions.overview_plaintext']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.sessions.id']
+					user_id?: parameters['rowFilter.sessions.user_id']
+					campaign_id?: parameters['rowFilter.sessions.campaign_id']
+					order?: parameters['rowFilter.sessions.order']
+					updated_at?: parameters['rowFilter.sessions.updated_at']
+					number?: parameters['rowFilter.sessions.number']
+					overview?: parameters['rowFilter.sessions.overview']
+					overview_plaintext?: parameters['rowFilter.sessions.overview_plaintext']
+				}
+				body: {
+					/** sessions */
+					sessions?: definitions['sessions']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/timelines': {
+		get: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.timelines.id']
+					user_id?: parameters['rowFilter.timelines.user_id']
+					campaign_id?: parameters['rowFilter.timelines.campaign_id']
+					name?: parameters['rowFilter.timelines.name']
+					startdate?: parameters['rowFilter.timelines.startdate']
+					overview?: parameters['rowFilter.timelines.overview']
+					overview_plaintext?: parameters['rowFilter.timelines.overview_plaintext']
+					updated_at?: parameters['rowFilter.timelines.updated_at']
+					/** Filtering Columns */
+					select?: parameters['select']
+					/** Ordering */
+					order?: parameters['order']
+					/** Limiting and Pagination */
+					offset?: parameters['offset']
+					/** Limiting and Pagination */
+					limit?: parameters['limit']
+				}
+				header: {
+					/** Limiting and Pagination */
+					Range?: parameters['range']
+					/** Limiting and Pagination */
+					'Range-Unit'?: parameters['rangeUnit']
+					/** Preference */
+					Prefer?: parameters['preferCount']
+				}
+			}
+			responses: {
+				/** OK */
+				200: {
+					schema: definitions['timelines'][]
+				}
+				/** Partial Content */
+				206: unknown
+			}
+		}
+		post: {
+			parameters: {
+				body: {
+					/** timelines */
+					timelines?: definitions['timelines']
+				}
+				query: {
+					/** Filtering Columns */
+					select?: parameters['select']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** Created */
+				201: unknown
+			}
+		}
+		delete: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.timelines.id']
+					user_id?: parameters['rowFilter.timelines.user_id']
+					campaign_id?: parameters['rowFilter.timelines.campaign_id']
+					name?: parameters['rowFilter.timelines.name']
+					startdate?: parameters['rowFilter.timelines.startdate']
+					overview?: parameters['rowFilter.timelines.overview']
+					overview_plaintext?: parameters['rowFilter.timelines.overview_plaintext']
+					updated_at?: parameters['rowFilter.timelines.updated_at']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+		patch: {
+			parameters: {
+				query: {
+					id?: parameters['rowFilter.timelines.id']
+					user_id?: parameters['rowFilter.timelines.user_id']
+					campaign_id?: parameters['rowFilter.timelines.campaign_id']
+					name?: parameters['rowFilter.timelines.name']
+					startdate?: parameters['rowFilter.timelines.startdate']
+					overview?: parameters['rowFilter.timelines.overview']
+					overview_plaintext?: parameters['rowFilter.timelines.overview_plaintext']
+					updated_at?: parameters['rowFilter.timelines.updated_at']
+				}
+				body: {
+					/** timelines */
+					timelines?: definitions['timelines']
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferReturn']
+				}
+			}
+			responses: {
+				/** No Content */
+				204: never
+			}
+		}
+	}
+	'/rpc/search_documents': {
+		post: {
+			parameters: {
+				body: {
+					args: {
+						/** Format: character varying */
+						document_term: string
+					}
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferParams']
+				}
+			}
+			responses: {
+				/** OK */
+				200: unknown
+			}
+		}
+	}
+	'/rpc/show_limit': {
+		post: {
+			parameters: {
+				body: {
+					args: { [key: string]: unknown }
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferParams']
+				}
+			}
+			responses: {
+				/** OK */
+				200: unknown
+			}
+		}
+	}
+	'/rpc/show_trgm': {
+		post: {
+			parameters: {
+				body: {
+					args: {
+						/** Format: text */
+						'': string
+					}
+				}
+				header: {
+					/** Preference */
+					Prefer?: parameters['preferParams']
+				}
+			}
+			responses: {
+				/** OK */
+				200: unknown
+			}
+		}
+	}
 }
 
 export interface definitions {
-  campaigns: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    campaign_id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default (now() AT TIME ZONE 'utc'::text)
-     */
-    created_at: string;
-    /**
-     * Format: text
-     * @default Campaign Name
-     */
-    name: string;
-    /**
-     * Format: text
-     * @default Campaign description.
-     */
-    description: string;
-    /**
-     * Format: text
-     * @default bottom
-     */
-    toolbar: string;
-    /** Format: text */
-    setting?: string;
-    /** Format: bigint */
-    startdate: number;
-  };
-  characters: {
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    created_at: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    updated_at: string;
-    /**
-     * Format: text
-     * @default Character
-     */
-    name: string;
-    /** Format: jsonb */
-    bio?: string;
-    /**
-     * Format: text
-     * @default Neutral NPC
-     */
-    type: string;
-    /** Format: text */
-    race?: string;
-    /** Format: text */
-    class?: string;
-    /** Format: smallint */
-    level?: number;
-    /** Format: text */
-    bio_text?: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    character_id: string;
-  };
-  document_instances: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `sessions.id`.<fk table='sessions' column='id'/>
-     */
-    session_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `documents.id`.<fk table='documents' column='id'/>
-     */
-    document_id: string;
-    /** Format: jsonb */
-    comment?: string;
-    /** Format: text */
-    comment_plaintext?: string;
-    /**
-     * Format: timestamp with time zone
-     * @default (now() AT TIME ZONE 'utc'::text)
-     */
-    created_at: string;
-  };
-  documents: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    created_at: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    updated_at: string;
-    /** Format: text */
-    name?: string;
-    /** Format: jsonb */
-    overview?: string;
-    /** Format: text */
-    overview_plaintext?: string;
-    /**
-     * Format: text
-     * @default other
-     */
-    type: string;
-  };
-  dreams: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    dream_id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    created_at: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    updated_at: string;
-    /** Format: text */
-    title?: string;
-    /** Format: jsonb */
-    content?: string;
-    /** Format: text */
-    content_text?: string;
-  };
-  events: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `timelines.id`.<fk table='timelines' column='id'/>
-     */
-    timeline_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /** Format: text */
-    name?: string;
-    /** Format: jsonb */
-    overview?: string;
-    /** Format: text */
-    overview_plaintext?: string;
-    /** Format: bigint */
-    date: number;
-  };
-  items: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    item_id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    created_at: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    updated_at: string;
-    /** Format: text */
-    name?: string;
-    /** Format: jsonb */
-    description?: string;
-    /** Format: text */
-    description_text?: string;
-    /** Format: text */
-    price?: string;
-    /** Format: text */
-    weight?: string;
-    /**
-     * Format: text
-     * @default false
-     */
-    magical?: string;
-  };
-  locations: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    location_id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    created_at: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    updated_at: string;
-    /** Format: text */
-    name?: string;
-    /** Format: jsonb */
-    description?: string;
-    /** Format: text */
-    description_text?: string;
-    /** Format: text */
-    dimension?: string;
-    /** Format: text */
-    world?: string;
-    /** Format: text */
-    continent?: string;
-  };
-  lore: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    lore_id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    created_at: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    updated_at: string;
-    /** Format: text */
-    title?: string;
-    /** Format: jsonb */
-    description?: string;
-    /** Format: text */
-    description_text?: string;
-  };
-  other: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    other_id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    created_at: string;
-    /**
-     * Format: timestamp with time zone
-     * @default timezone('utc'::text, now())
-     */
-    updated_at: string;
-    /** Format: text */
-    title?: string;
-    /** Format: jsonb */
-    note?: string;
-    /** Format: text */
-    note_text?: string;
-  };
-  profile: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     */
-    id: string;
-    /** Format: text */
-    display_name: string;
-    /** Format: text */
-    email?: string;
-    /** Format: text */
-    theme?: string;
-  };
-  sessions: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /** Format: ARRAY */
-    order?: unknown[];
-    /**
-     * Format: timestamp with time zone
-     * @default (now() AT TIME ZONE 'utc'::text)
-     */
-    updated_at: string;
-    /** Format: smallint */
-    number?: number;
-    /** Format: jsonb */
-    overview?: string;
-    /** Format: text */
-    overview_plaintext?: string;
-  };
-  timelines: {
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Primary Key.<pk/>
-     * @default extensions.uuid_generate_v4()
-     */
-    id: string;
-    /**
-     * Format: uuid
-     * @default auth.uid()
-     */
-    user_id: string;
-    /**
-     * Format: uuid
-     * @description Note:
-     * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
-     */
-    campaign_id: string;
-    /** Format: text */
-    name?: string;
-    /** Format: bigint */
-    startdate?: number;
-    /** Format: jsonb */
-    overview?: string;
-    /** Format: text */
-    overview_plaintext?: string;
-    /**
-     * Format: timestamp with time zone
-     * @default (now() AT TIME ZONE 'utc'::text)
-     */
-    updated_at?: string;
-  };
+	campaigns: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		campaign_id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default (now() AT TIME ZONE 'utc'::text)
+		 */
+		created_at: string
+		/**
+		 * Format: text
+		 * @default Campaign Name
+		 */
+		name: string
+		/**
+		 * Format: text
+		 * @default Campaign description.
+		 */
+		description: string
+		/**
+		 * Format: text
+		 * @default bottom
+		 */
+		toolbar: string
+		/** Format: text */
+		setting?: string
+		/** Format: bigint */
+		startdate: number
+	}
+	characters: {
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		created_at: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		updated_at: string
+		/**
+		 * Format: text
+		 * @default Character
+		 */
+		name: string
+		/** Format: jsonb */
+		bio?: string
+		/**
+		 * Format: text
+		 * @default Neutral NPC
+		 */
+		type: string
+		/** Format: text */
+		race?: string
+		/** Format: text */
+		class?: string
+		/** Format: smallint */
+		level?: number
+		/** Format: text */
+		bio_text?: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		character_id: string
+	}
+	document_instances: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `sessions.id`.<fk table='sessions' column='id'/>
+		 */
+		session_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `documents.id`.<fk table='documents' column='id'/>
+		 */
+		document_id: string
+		/** Format: jsonb */
+		comment?: string
+		/** Format: text */
+		comment_plaintext?: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default (now() AT TIME ZONE 'utc'::text)
+		 */
+		created_at: string
+	}
+	documents: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		created_at: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		updated_at: string
+		/** Format: text */
+		name?: string
+		/** Format: jsonb */
+		overview?: string
+		/** Format: text */
+		overview_plaintext?: string
+		/**
+		 * Format: text
+		 * @default other
+		 */
+		type: string
+		/** Format: ARRAY */
+		tags?: string[]
+	}
+	dreams: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		dream_id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		created_at: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		updated_at: string
+		/** Format: text */
+		title?: string
+		/** Format: jsonb */
+		content?: string
+		/** Format: text */
+		content_text?: string
+	}
+	events: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `timelines.id`.<fk table='timelines' column='id'/>
+		 */
+		timeline_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/** Format: text */
+		name?: string
+		/** Format: jsonb */
+		overview?: string
+		/** Format: text */
+		overview_plaintext?: string
+		/** Format: bigint */
+		date: number
+	}
+	items: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		item_id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		created_at: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		updated_at: string
+		/** Format: text */
+		name?: string
+		/** Format: jsonb */
+		description?: string
+		/** Format: text */
+		description_text?: string
+		/** Format: text */
+		price?: string
+		/** Format: text */
+		weight?: string
+		/**
+		 * Format: text
+		 * @default false
+		 */
+		magical?: string
+	}
+	locations: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		location_id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		created_at: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		updated_at: string
+		/** Format: text */
+		name?: string
+		/** Format: jsonb */
+		description?: string
+		/** Format: text */
+		description_text?: string
+		/** Format: text */
+		dimension?: string
+		/** Format: text */
+		world?: string
+		/** Format: text */
+		continent?: string
+	}
+	lore: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		lore_id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		created_at: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		updated_at: string
+		/** Format: text */
+		title?: string
+		/** Format: jsonb */
+		description?: string
+		/** Format: text */
+		description_text?: string
+	}
+	other: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		other_id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		created_at: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default timezone('utc'::text, now())
+		 */
+		updated_at: string
+		/** Format: text */
+		title?: string
+		/** Format: jsonb */
+		note?: string
+		/** Format: text */
+		note_text?: string
+	}
+	profile: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 */
+		id: string
+		/** Format: text */
+		display_name: string
+		/** Format: text */
+		email?: string
+		/** Format: text */
+		theme?: string
+	}
+	sessions: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/** Format: ARRAY */
+		order?: unknown[]
+		/**
+		 * Format: timestamp with time zone
+		 * @default (now() AT TIME ZONE 'utc'::text)
+		 */
+		updated_at: string
+		/** Format: smallint */
+		number?: number
+		/** Format: jsonb */
+		overview?: string
+		/** Format: text */
+		overview_plaintext?: string
+	}
+	timelines: {
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Primary Key.<pk/>
+		 * @default extensions.uuid_generate_v4()
+		 */
+		id: string
+		/**
+		 * Format: uuid
+		 * @default auth.uid()
+		 */
+		user_id: string
+		/**
+		 * Format: uuid
+		 * @description Note:
+		 * This is a Foreign Key to `campaigns.campaign_id`.<fk table='campaigns' column='campaign_id'/>
+		 */
+		campaign_id: string
+		/** Format: text */
+		name?: string
+		/** Format: bigint */
+		startdate?: number
+		/** Format: jsonb */
+		overview?: string
+		/** Format: text */
+		overview_plaintext?: string
+		/**
+		 * Format: timestamp with time zone
+		 * @default (now() AT TIME ZONE 'utc'::text)
+		 */
+		updated_at?: string
+	}
 }
 
 export interface parameters {
-  /**
-   * @description Preference
-   * @enum {string}
-   */
-  preferParams: "params=single-object";
-  /**
-   * @description Preference
-   * @enum {string}
-   */
-  preferReturn: "return=representation" | "return=minimal" | "return=none";
-  /**
-   * @description Preference
-   * @enum {string}
-   */
-  preferCount: "count=none";
-  /** @description Filtering Columns */
-  select: string;
-  /** @description On Conflict */
-  on_conflict: string;
-  /** @description Ordering */
-  order: string;
-  /** @description Limiting and Pagination */
-  range: string;
-  /**
-   * @description Limiting and Pagination
-   * @default items
-   */
-  rangeUnit: string;
-  /** @description Limiting and Pagination */
-  offset: string;
-  /** @description Limiting and Pagination */
-  limit: string;
-  /** @description campaigns */
-  "body.campaigns": definitions["campaigns"];
-  /** Format: uuid */
-  "rowFilter.campaigns.campaign_id": string;
-  /** Format: uuid */
-  "rowFilter.campaigns.user_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.campaigns.created_at": string;
-  /** Format: text */
-  "rowFilter.campaigns.name": string;
-  /** Format: text */
-  "rowFilter.campaigns.description": string;
-  /** Format: text */
-  "rowFilter.campaigns.toolbar": string;
-  /** Format: text */
-  "rowFilter.campaigns.setting": string;
-  /** Format: bigint */
-  "rowFilter.campaigns.startdate": string;
-  /** @description characters */
-  "body.characters": definitions["characters"];
-  /** Format: uuid */
-  "rowFilter.characters.user_id": string;
-  /** Format: uuid */
-  "rowFilter.characters.campaign_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.characters.created_at": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.characters.updated_at": string;
-  /** Format: text */
-  "rowFilter.characters.name": string;
-  /** Format: jsonb */
-  "rowFilter.characters.bio": string;
-  /** Format: text */
-  "rowFilter.characters.type": string;
-  /** Format: text */
-  "rowFilter.characters.race": string;
-  /** Format: text */
-  "rowFilter.characters.class": string;
-  /** Format: smallint */
-  "rowFilter.characters.level": string;
-  /** Format: text */
-  "rowFilter.characters.bio_text": string;
-  /** Format: uuid */
-  "rowFilter.characters.character_id": string;
-  /** @description document_instances */
-  "body.document_instances": definitions["document_instances"];
-  /** Format: uuid */
-  "rowFilter.document_instances.id": string;
-  /** Format: uuid */
-  "rowFilter.document_instances.user_id": string;
-  /** Format: uuid */
-  "rowFilter.document_instances.session_id": string;
-  /** Format: uuid */
-  "rowFilter.document_instances.document_id": string;
-  /** Format: jsonb */
-  "rowFilter.document_instances.comment": string;
-  /** Format: text */
-  "rowFilter.document_instances.comment_plaintext": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.document_instances.created_at": string;
-  /** @description documents */
-  "body.documents": definitions["documents"];
-  /** Format: uuid */
-  "rowFilter.documents.id": string;
-  /** Format: uuid */
-  "rowFilter.documents.user_id": string;
-  /** Format: uuid */
-  "rowFilter.documents.campaign_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.documents.created_at": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.documents.updated_at": string;
-  /** Format: text */
-  "rowFilter.documents.name": string;
-  /** Format: jsonb */
-  "rowFilter.documents.overview": string;
-  /** Format: text */
-  "rowFilter.documents.overview_plaintext": string;
-  /** Format: text */
-  "rowFilter.documents.type": string;
-  /** @description dreams */
-  "body.dreams": definitions["dreams"];
-  /** Format: uuid */
-  "rowFilter.dreams.dream_id": string;
-  /** Format: uuid */
-  "rowFilter.dreams.user_id": string;
-  /** Format: uuid */
-  "rowFilter.dreams.campaign_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.dreams.created_at": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.dreams.updated_at": string;
-  /** Format: text */
-  "rowFilter.dreams.title": string;
-  /** Format: jsonb */
-  "rowFilter.dreams.content": string;
-  /** Format: text */
-  "rowFilter.dreams.content_text": string;
-  /** @description events */
-  "body.events": definitions["events"];
-  /** Format: uuid */
-  "rowFilter.events.id": string;
-  /** Format: uuid */
-  "rowFilter.events.user_id": string;
-  /** Format: uuid */
-  "rowFilter.events.timeline_id": string;
-  /** Format: uuid */
-  "rowFilter.events.campaign_id": string;
-  /** Format: text */
-  "rowFilter.events.name": string;
-  /** Format: jsonb */
-  "rowFilter.events.overview": string;
-  /** Format: text */
-  "rowFilter.events.overview_plaintext": string;
-  /** Format: bigint */
-  "rowFilter.events.date": string;
-  /** @description items */
-  "body.items": definitions["items"];
-  /** Format: uuid */
-  "rowFilter.items.item_id": string;
-  /** Format: uuid */
-  "rowFilter.items.user_id": string;
-  /** Format: uuid */
-  "rowFilter.items.campaign_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.items.created_at": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.items.updated_at": string;
-  /** Format: text */
-  "rowFilter.items.name": string;
-  /** Format: jsonb */
-  "rowFilter.items.description": string;
-  /** Format: text */
-  "rowFilter.items.description_text": string;
-  /** Format: text */
-  "rowFilter.items.price": string;
-  /** Format: text */
-  "rowFilter.items.weight": string;
-  /** Format: text */
-  "rowFilter.items.magical": string;
-  /** @description locations */
-  "body.locations": definitions["locations"];
-  /** Format: uuid */
-  "rowFilter.locations.location_id": string;
-  /** Format: uuid */
-  "rowFilter.locations.user_id": string;
-  /** Format: uuid */
-  "rowFilter.locations.campaign_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.locations.created_at": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.locations.updated_at": string;
-  /** Format: text */
-  "rowFilter.locations.name": string;
-  /** Format: jsonb */
-  "rowFilter.locations.description": string;
-  /** Format: text */
-  "rowFilter.locations.description_text": string;
-  /** Format: text */
-  "rowFilter.locations.dimension": string;
-  /** Format: text */
-  "rowFilter.locations.world": string;
-  /** Format: text */
-  "rowFilter.locations.continent": string;
-  /** @description lore */
-  "body.lore": definitions["lore"];
-  /** Format: uuid */
-  "rowFilter.lore.lore_id": string;
-  /** Format: uuid */
-  "rowFilter.lore.user_id": string;
-  /** Format: uuid */
-  "rowFilter.lore.campaign_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.lore.created_at": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.lore.updated_at": string;
-  /** Format: text */
-  "rowFilter.lore.title": string;
-  /** Format: jsonb */
-  "rowFilter.lore.description": string;
-  /** Format: text */
-  "rowFilter.lore.description_text": string;
-  /** @description other */
-  "body.other": definitions["other"];
-  /** Format: uuid */
-  "rowFilter.other.other_id": string;
-  /** Format: uuid */
-  "rowFilter.other.user_id": string;
-  /** Format: uuid */
-  "rowFilter.other.campaign_id": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.other.created_at": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.other.updated_at": string;
-  /** Format: text */
-  "rowFilter.other.title": string;
-  /** Format: jsonb */
-  "rowFilter.other.note": string;
-  /** Format: text */
-  "rowFilter.other.note_text": string;
-  /** @description profile */
-  "body.profile": definitions["profile"];
-  /** Format: uuid */
-  "rowFilter.profile.id": string;
-  /** Format: text */
-  "rowFilter.profile.display_name": string;
-  /** Format: text */
-  "rowFilter.profile.email": string;
-  /** Format: text */
-  "rowFilter.profile.theme": string;
-  /** @description sessions */
-  "body.sessions": definitions["sessions"];
-  /** Format: uuid */
-  "rowFilter.sessions.id": string;
-  /** Format: uuid */
-  "rowFilter.sessions.user_id": string;
-  /** Format: uuid */
-  "rowFilter.sessions.campaign_id": string;
-  /** Format: ARRAY */
-  "rowFilter.sessions.order": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.sessions.updated_at": string;
-  /** Format: smallint */
-  "rowFilter.sessions.number": string;
-  /** Format: jsonb */
-  "rowFilter.sessions.overview": string;
-  /** Format: text */
-  "rowFilter.sessions.overview_plaintext": string;
-  /** @description timelines */
-  "body.timelines": definitions["timelines"];
-  /** Format: uuid */
-  "rowFilter.timelines.id": string;
-  /** Format: uuid */
-  "rowFilter.timelines.user_id": string;
-  /** Format: uuid */
-  "rowFilter.timelines.campaign_id": string;
-  /** Format: text */
-  "rowFilter.timelines.name": string;
-  /** Format: bigint */
-  "rowFilter.timelines.startdate": string;
-  /** Format: jsonb */
-  "rowFilter.timelines.overview": string;
-  /** Format: text */
-  "rowFilter.timelines.overview_plaintext": string;
-  /** Format: timestamp with time zone */
-  "rowFilter.timelines.updated_at": string;
+	/**
+	 * @description Preference
+	 * @enum {string}
+	 */
+	preferParams: 'params=single-object'
+	/**
+	 * @description Preference
+	 * @enum {string}
+	 */
+	preferReturn: 'return=representation' | 'return=minimal' | 'return=none'
+	/**
+	 * @description Preference
+	 * @enum {string}
+	 */
+	preferCount: 'count=none'
+	/** @description Filtering Columns */
+	select: string
+	/** @description On Conflict */
+	on_conflict: string
+	/** @description Ordering */
+	order: string
+	/** @description Limiting and Pagination */
+	range: string
+	/**
+	 * @description Limiting and Pagination
+	 * @default items
+	 */
+	rangeUnit: string
+	/** @description Limiting and Pagination */
+	offset: string
+	/** @description Limiting and Pagination */
+	limit: string
+	/** @description campaigns */
+	'body.campaigns': definitions['campaigns']
+	/** Format: uuid */
+	'rowFilter.campaigns.campaign_id': string
+	/** Format: uuid */
+	'rowFilter.campaigns.user_id': string
+	/** Format: timestamp with time zone */
+	'rowFilter.campaigns.created_at': string
+	/** Format: text */
+	'rowFilter.campaigns.name': string
+	/** Format: text */
+	'rowFilter.campaigns.description': string
+	/** Format: text */
+	'rowFilter.campaigns.toolbar': string
+	/** Format: text */
+	'rowFilter.campaigns.setting': string
+	/** Format: bigint */
+	'rowFilter.campaigns.startdate': string
+	/** @description characters */
+	'body.characters': definitions['characters']
+	/** Format: uuid */
+	'rowFilter.characters.user_id': string
+	/** Format: uuid */
+	'rowFilter.characters.campaign_id': string
+	/** Format: timestamp with time zone */
+	'rowFilter.characters.created_at': string
+	/** Format: timestamp with time zone */
+	'rowFilter.characters.updated_at': string
+	/** Format: text */
+	'rowFilter.characters.name': string
+	/** Format: jsonb */
+	'rowFilter.characters.bio': string
+	/** Format: text */
+	'rowFilter.characters.type': string
+	/** Format: text */
+	'rowFilter.characters.race': string
+	/** Format: text */
+	'rowFilter.characters.class': string
+	/** Format: smallint */
+	'rowFilter.characters.level': string
+	/** Format: text */
+	'rowFilter.characters.bio_text': string
+	/** Format: uuid */
+	'rowFilter.characters.character_id': string
+	/** @description document_instances */
+	'body.document_instances': definitions['document_instances']
+	/** Format: uuid */
+	'rowFilter.document_instances.id': string
+	/** Format: uuid */
+	'rowFilter.document_instances.user_id': string
+	/** Format: uuid */
+	'rowFilter.document_instances.session_id': string
+	/** Format: uuid */
+	'rowFilter.document_instances.document_id': string
+	/** Format: jsonb */
+	'rowFilter.document_instances.comment': string
+	/** Format: text */
+	'rowFilter.document_instances.comment_plaintext': string
+	/** Format: timestamp with time zone */
+	'rowFilter.document_instances.created_at': string
+	/** @description documents */
+	'body.documents': definitions['documents']
+	/** Format: uuid */
+	'rowFilter.documents.id': string
+	/** Format: uuid */
+	'rowFilter.documents.user_id': string
+	/** Format: uuid */
+	'rowFilter.documents.campaign_id': string
+	/** Format: timestamp with time zone */
+	'rowFilter.documents.created_at': string
+	/** Format: timestamp with time zone */
+	'rowFilter.documents.updated_at': string
+	/** Format: text */
+	'rowFilter.documents.name': string
+	/** Format: jsonb */
+	'rowFilter.documents.overview': string
+	/** Format: text */
+	'rowFilter.documents.overview_plaintext': string
+	/** Format: text */
+	'rowFilter.documents.type': string
+	/** Format: ARRAY */
+	'rowFilter.documents.tags': string
+	/** @description dreams */
+	'body.dreams': definitions['dreams']
+	/** Format: uuid */
+	'rowFilter.dreams.dream_id': string
+	/** Format: uuid */
+	'rowFilter.dreams.user_id': string
+	/** Format: uuid */
+	'rowFilter.dreams.campaign_id': string
+	/** Format: timestamp with time zone */
+	'rowFilter.dreams.created_at': string
+	/** Format: timestamp with time zone */
+	'rowFilter.dreams.updated_at': string
+	/** Format: text */
+	'rowFilter.dreams.title': string
+	/** Format: jsonb */
+	'rowFilter.dreams.content': string
+	/** Format: text */
+	'rowFilter.dreams.content_text': string
+	/** @description events */
+	'body.events': definitions['events']
+	/** Format: uuid */
+	'rowFilter.events.id': string
+	/** Format: uuid */
+	'rowFilter.events.user_id': string
+	/** Format: uuid */
+	'rowFilter.events.timeline_id': string
+	/** Format: uuid */
+	'rowFilter.events.campaign_id': string
+	/** Format: text */
+	'rowFilter.events.name': string
+	/** Format: jsonb */
+	'rowFilter.events.overview': string
+	/** Format: text */
+	'rowFilter.events.overview_plaintext': string
+	/** Format: bigint */
+	'rowFilter.events.date': string
+	/** @description items */
+	'body.items': definitions['items']
+	/** Format: uuid */
+	'rowFilter.items.item_id': string
+	/** Format: uuid */
+	'rowFilter.items.user_id': string
+	/** Format: uuid */
+	'rowFilter.items.campaign_id': string
+	/** Format: timestamp with time zone */
+	'rowFilter.items.created_at': string
+	/** Format: timestamp with time zone */
+	'rowFilter.items.updated_at': string
+	/** Format: text */
+	'rowFilter.items.name': string
+	/** Format: jsonb */
+	'rowFilter.items.description': string
+	/** Format: text */
+	'rowFilter.items.description_text': string
+	/** Format: text */
+	'rowFilter.items.price': string
+	/** Format: text */
+	'rowFilter.items.weight': string
+	/** Format: text */
+	'rowFilter.items.magical': string
+	/** @description locations */
+	'body.locations': definitions['locations']
+	/** Format: uuid */
+	'rowFilter.locations.location_id': string
+	/** Format: uuid */
+	'rowFilter.locations.user_id': string
+	/** Format: uuid */
+	'rowFilter.locations.campaign_id': string
+	/** Format: timestamp with time zone */
+	'rowFilter.locations.created_at': string
+	/** Format: timestamp with time zone */
+	'rowFilter.locations.updated_at': string
+	/** Format: text */
+	'rowFilter.locations.name': string
+	/** Format: jsonb */
+	'rowFilter.locations.description': string
+	/** Format: text */
+	'rowFilter.locations.description_text': string
+	/** Format: text */
+	'rowFilter.locations.dimension': string
+	/** Format: text */
+	'rowFilter.locations.world': string
+	/** Format: text */
+	'rowFilter.locations.continent': string
+	/** @description lore */
+	'body.lore': definitions['lore']
+	/** Format: uuid */
+	'rowFilter.lore.lore_id': string
+	/** Format: uuid */
+	'rowFilter.lore.user_id': string
+	/** Format: uuid */
+	'rowFilter.lore.campaign_id': string
+	/** Format: timestamp with time zone */
+	'rowFilter.lore.created_at': string
+	/** Format: timestamp with time zone */
+	'rowFilter.lore.updated_at': string
+	/** Format: text */
+	'rowFilter.lore.title': string
+	/** Format: jsonb */
+	'rowFilter.lore.description': string
+	/** Format: text */
+	'rowFilter.lore.description_text': string
+	/** @description other */
+	'body.other': definitions['other']
+	/** Format: uuid */
+	'rowFilter.other.other_id': string
+	/** Format: uuid */
+	'rowFilter.other.user_id': string
+	/** Format: uuid */
+	'rowFilter.other.campaign_id': string
+	/** Format: timestamp with time zone */
+	'rowFilter.other.created_at': string
+	/** Format: timestamp with time zone */
+	'rowFilter.other.updated_at': string
+	/** Format: text */
+	'rowFilter.other.title': string
+	/** Format: jsonb */
+	'rowFilter.other.note': string
+	/** Format: text */
+	'rowFilter.other.note_text': string
+	/** @description profile */
+	'body.profile': definitions['profile']
+	/** Format: uuid */
+	'rowFilter.profile.id': string
+	/** Format: text */
+	'rowFilter.profile.display_name': string
+	/** Format: text */
+	'rowFilter.profile.email': string
+	/** Format: text */
+	'rowFilter.profile.theme': string
+	/** @description sessions */
+	'body.sessions': definitions['sessions']
+	/** Format: uuid */
+	'rowFilter.sessions.id': string
+	/** Format: uuid */
+	'rowFilter.sessions.user_id': string
+	/** Format: uuid */
+	'rowFilter.sessions.campaign_id': string
+	/** Format: ARRAY */
+	'rowFilter.sessions.order': string
+	/** Format: timestamp with time zone */
+	'rowFilter.sessions.updated_at': string
+	/** Format: smallint */
+	'rowFilter.sessions.number': string
+	/** Format: jsonb */
+	'rowFilter.sessions.overview': string
+	/** Format: text */
+	'rowFilter.sessions.overview_plaintext': string
+	/** @description timelines */
+	'body.timelines': definitions['timelines']
+	/** Format: uuid */
+	'rowFilter.timelines.id': string
+	/** Format: uuid */
+	'rowFilter.timelines.user_id': string
+	/** Format: uuid */
+	'rowFilter.timelines.campaign_id': string
+	/** Format: text */
+	'rowFilter.timelines.name': string
+	/** Format: bigint */
+	'rowFilter.timelines.startdate': string
+	/** Format: jsonb */
+	'rowFilter.timelines.overview': string
+	/** Format: text */
+	'rowFilter.timelines.overview_plaintext': string
+	/** Format: timestamp with time zone */
+	'rowFilter.timelines.updated_at': string
 }
 
 export interface operations {}
