@@ -1,7 +1,9 @@
+import { LoadingSpinner } from '@/common/components/loading'
 import { useClientRouter } from '@/common/hooks/useClientRouter'
 import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
 import { queryBuilder } from '@/common/queries/queryBuilder'
 import { RichtextWrapper } from '@/modules/tiptap/wrappers/RichtextWrapper'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { Layout } from './layout'
 
 export default function Campaign() {
@@ -16,6 +18,10 @@ export default function Campaign() {
 	const recentNotes = useSupabaseQuery(notesKey, notesQuery)
 	const recentTimelines = useSupabaseQuery(timelinesKey, timelinesQuery)
 	const campaign = useSupabaseQuery(campaignKey, campaignQuery)
+
+	const [recentNoteAnimator] = useAutoAnimate<any>()
+	const [recentTimelineAnimator] = useAutoAnimate<any>()
+
 	console.log(campaign)
 	return (
 		<div className='grid grid-cols-2 gap-4'>
@@ -23,7 +29,8 @@ export default function Campaign() {
 				<div className='card-body'>
 					<div className='card-title'>Recent Notes</div>
 					<div>
-						<ul>
+						{recentNotes.isLoading && <LoadingSpinner />}
+						<ul ref={recentNoteAnimator}>
 							{recentNotes.data
 								?.filter((e, i) => i < 5)
 								.map(note => (
@@ -48,7 +55,8 @@ export default function Campaign() {
 				<div className='card-body'>
 					<div className='card-title'>Recent Timelines</div>
 					<div>
-						<ul>
+						{recentTimelines.isLoading && <LoadingSpinner />}
+						<ul ref={recentTimelineAnimator}>
 							{recentTimelines.data
 								?.filter((e, i) => i < 5)
 								.map(note => (
