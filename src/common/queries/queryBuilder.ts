@@ -34,7 +34,7 @@ export const queryBuilder = {
 				keyBuilder.timelines.all(),
 				supabase
 					.from<definitions['timelines']>('timelines')
-					.select('name, id, campaign_id, updated_at, created_at'),
+					.select('name, id, campaign_id, updated_at, tags'),
 			] as const
 		},
 		campaign(cid: string) {
@@ -42,7 +42,7 @@ export const queryBuilder = {
 				keyBuilder.timelines.campaign(cid),
 				supabase
 					.from<definitions['timelines']>('timelines')
-					.select('name, id, campaign_id, updated_at, created_at')
+					.select('name, id, campaign_id, updated_at, tags')
 					.eq('campaign_id', cid),
 			] as const
 		},
@@ -74,7 +74,10 @@ export const queryBuilder = {
 		timeline(tid: string) {
 			return [
 				keyBuilder.events.timeline(tid),
-				supabase.from<definitions['events']>('events').select('id').eq('timeline_id', tid),
+				supabase
+					.from<definitions['events']>('events')
+					.select('id, index')
+					.eq('timeline_id', tid),
 			] as const
 		},
 		single(eid: string) {
