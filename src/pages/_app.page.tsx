@@ -9,21 +9,22 @@ import { Metatags } from '@/modules/metatags'
 import { ThemeProvider } from '@/modules/theme'
 import { Spotlight } from '@/modules/spotlight'
 import { QueryClientProvider, QueryClient } from 'react-query'
+import { toast } from 'react-hot-toast'
 
 const queryClient = new QueryClient()
 
 function MyApp({ Component, pageProps }: AppProps) {
 	//@ts-ignore
-	const getLayout = Component.getLayout || ((page) => page)
+	const getLayout = Component.getLayout || (page => page)
 	return (
 		<SupabaseProvider>
 			<Metatags />
 			<Toaster
 				toastOptions={{
 					style: {
-						borderRadius: '20px',
-						background: '#ede7d8',
-						color: 'black',
+						borderRadius: '8px',
+						background: 'hsl(var(--p))',
+						color: 'hsl(var(--pc))',
 					},
 				}}
 			/>

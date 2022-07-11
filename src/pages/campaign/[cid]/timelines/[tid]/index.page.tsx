@@ -25,7 +25,7 @@ import { BiTrash } from 'react-icons/bi'
 
 export default function Timeline() {
 	const router = useClientRouter()
-	const [animateList] = useAutoAnimate()
+	const [animateList] = useAutoAnimate<any>()
 
 	const [timelineKey, timelineQuery] = queryBuilder.timelines.single(router.query.tid as string)
 	const [eventListKey, eventListQuery] = queryBuilder.events.timeline(router.query.tid as string)

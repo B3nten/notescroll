@@ -8,12 +8,17 @@ import toast from 'react-hot-toast'
 import { logOut } from '@/modules/supabase'
 import Settings from '@/modules/settings'
 import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
+import { useAutoAnimate } from '@formkit/auto-animate/react'
+import { useMutation, useQueryClient } from 'react-query'
+import { queryBuilder } from '@/common/queries/queryBuilder'
 
 export default function Index() {
-	const campaigns = useSupabaseQuery(['campaigns'], supabase.from('campaigns').select('*'))
+	const [campaignKey, campaignQuery] = queryBuilder.campaigns.all()
+	const campaigns = useSupabaseQuery(campaignKey, campaignQuery)
 	const router = useClientRouter()
 	const [newCampaignModal, setNewCampaignModal] = useState(false)
 	const session = useSession()
+	const [animateCampaignList] = useAutoAnimate<any>()
 
 	return (
 		<>
@@ -29,23 +34,20 @@ export default function Index() {
 				Hello {session.session.user.user_metadata.user_name}
 			</h1>
 			<div className={`grid md:grid-cols-2 gap-10 p-3 md:p-8`}>
-				<div
-					className={`card bg-base-200 shadow-xl transition duration-500 ${
-						campaigns.isLoading && 'blur-sm'
-					}`}>
-					<div className='card-body'>
-						<h2 className='card-title font-heading'>Campaigns</h2>
-						<ul className='text-lg space-y-2'>
+				<div className={`card bg-base-200 shadow-xl transition`}>
+					<div className='card-body transition'>
+						<h2 className='card-title font-heading transition'>Campaigns</h2>
+						<ul ref={animateCampaignList} className='text-lg space-y-2 transition'>
 							{campaigns.isLoading && <LoadingSpinner />}
 							{campaigns.isSuccess &&
 								campaigns.data.map(c => (
 									<li
-										key={c.campaign_id}
+										key={c.id}
 										className='flex items-center justify-between p-2 bg-base-300 rounded-md'>
 										<div>{c.name}</div>
 										<button
 											onClick={() => {
-												router.push('/campaign/' + c.campaign_id)
+												router.push('/campaign/' + c.id)
 											}}
 											className='btn btn-sm'>
 											Open
@@ -57,7 +59,9 @@ export default function Index() {
 							<DialogTrigger asChild>
 								<button
 									onClick={() => setNewCampaignModal(true)}
-									className='btn btn-circle mb-0 mx-auto'>
+									className={`btn btn-circle mb-0 mx-auto transition ${
+										campaigns.isLoading && 'opacity-0'
+									}`}>
 									+
 								</button>
 							</DialogTrigger>
@@ -87,60 +91,58 @@ export default function Index() {
 interface CreateCampaign {
 	close: any
 }
+
 function CreateCampaign({ close }: CreateCampaign) {
 	useKeydown('Escape', () => close(false))
 
-	const [alert, showAlert] = useState(false)
-	const [loading, showLoading] = useState(false)
+	const [campaignKey, campaignQuery] = queryBuilder.campaigns.all()
 
-	const name = useRef<HTMLInputElement>()
-	const setting = useRef<HTMLInputElement>()
-	const startDate = useRef<HTMLInputElement>()
+	const name = useRef<any>()
 
-	const campaigns = useSupabaseQuery(['campaigns'], supabase.from('campaigns').select('*'))
+	const client = useQueryClient()
 
-	async function handleClick() {
-		if (name.current.value.length > 3 && startDate.current?.value) {
-			showAlert(false)
-			showLoading(true)
-			try {
-				const { error } = await supabase.from('campaigns').insert({
-					name: name.current.value,
-					startdate: startDate.current.valueAsNumber,
-					setting: setting.current.value,
-				})
+	const insertCampaign = useMutation(
+		async () => {
+			if (name.current.value.length > 3) {
+				const { data, error } = await supabase
+					.from('campaigns')
+					.insert({ name: name.current.value })
 				if (error) throw error
-				campaigns.mutate()
-				toast.success('Campaign created')
-				close(false)
-			} catch (error) {
-				toast.error(error.message)
+				return data
+			} else {
+				throw new Error('Invalid campaign name')
 			}
-		} else {
-			showAlert(true)
+		},
+		{
+			onError: error => {
+				let message = 'An unknown error occured'
+				if (error instanceof Error) message = error.message
+				toast.error(message)
+			},
+			onSuccess: data => {
+				toast.success('Campaign created')
+				client.setQueryData(campaignKey, (oldData: any) => {
+					let newData = [...(oldData as {}[])]
+					newData.push(data)
+					return newData
+				})
+				close(false)
+			},
 		}
-	}
+	)
+
 	return (
 		<div className='space-y-2'>
 			<label className='block'>
 				<div>Campaign Name</div>
 				<input ref={name} className='input input-primary w-full' />
 			</label>
-			<label className='block'>
-				<div>Campaign Setting</div>
-				<textarea ref={setting} className='textarea textarea-primary w-full h-36' />
-			</label>
-			<label className='block'>
-				<div>Ingame Start Date</div>
-				<input ref={startDate} type='date' className='input input-primary' />
-			</label>
-			<button onClick={handleClick} className='btn btn-primary'>
-				Create
+			<button onClick={() => insertCampaign.mutate()} className='btn btn-primary'>
+				<div className='flex space-x-2'>
+					<span>Create</span>
+					{insertCampaign.isLoading && <LoadingSpinner />}
+				</div>
 			</button>
-			<span className='inline-block ml-3'>
-				<Loading loaded={[!loading]} />
-			</span>
-			{alert && <span className='text-error ml-2'>please provide a name and date</span>}
 		</div>
 	)
 }

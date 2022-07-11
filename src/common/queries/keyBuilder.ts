@@ -22,6 +22,9 @@ export const keyBuilder = {
 		campaign(cid: string) {
 			return [this.all(), cid]
 		},
+		recent(cid: string, limit: number) {
+			return [this.campaign(cid), 'recent', limit]
+		},
 		single(nid: string) {
 			return [this.all(), nid]
 		},

@@ -1,8 +1,4 @@
-import {
-	DialogTrigger,
-	DialogContent,
-	Dialog,
-} from '@/common/components/dialog'
+import { DialogTrigger, DialogContent, Dialog } from '@/common/components/dialog'
 import {
 	DropdownContent,
 	DropdownTrigger,
@@ -14,14 +10,7 @@ import StarterKit from '@tiptap/starter-kit'
 import referenceNode from './nodes/referenceNode'
 import styles from './editor.module.css'
 import * as Toolbar from '@radix-ui/react-toolbar'
-import {
-	FaBold,
-	FaItalic,
-	FaStrikethrough,
-	FaHeading,
-	FaListUl,
-	FaListOl,
-} from 'react-icons/fa'
+import { FaBold, FaItalic, FaStrikethrough, FaHeading, FaListUl, FaListOl } from 'react-icons/fa'
 import { BiHeading } from 'react-icons/bi'
 import { VscReferences } from 'react-icons/vsc'
 import { CgFormatHeading } from 'react-icons/cg'
@@ -62,9 +51,7 @@ export function Editor({
 	const editor = useEditor({
 		editorProps: {
 			attributes: {
-				class: `textarea input-ghost ${styles.editor} ${
-					!editable && styles.notEditable
-				}`,
+				class: `textarea input-ghost ${styles.editor} ${!editable && styles.notEditable}`,
 				style: `min-height:${minHeight}; max-height:${maxHeight};`,
 			},
 		},
@@ -110,11 +97,7 @@ export function Editor({
 
 	function setReference(id: string, type: string, docName: string) {
 		//@ts-ignore
-		editor
-			?.chain()
-			.focus()
-			.setReference(editor, { id: id, type: type, name: docName })
-			.run()
+		editor?.chain().focus().setReference(editor, { id: id, type: type, name: docName }).run()
 	}
 
 	const debouncer = useCallback(
@@ -164,10 +147,10 @@ export function Editor({
 					disabled={editor?.view.state.selection.empty}
 					className={`${styles.button}
                     ${
-											editor?.view.state.selection.empty
-												? 'opacity-40'
-												: 'hover:bg-secondary-focus'
-										}  
+								editor?.view.state.selection.empty
+									? 'opacity-40'
+									: 'hover:bg-secondary-focus'
+							}  
                     ${editor?.isActive('bold') ? '!border-black' : ''}
                     `}>
 					<FaBold className='fill-secondary-content stroke-secondary-content' />
@@ -177,10 +160,10 @@ export function Editor({
 					disabled={editor?.view.state.selection.empty}
 					className={`${styles.button}
                     ${
-											editor?.view.state.selection.empty
-												? 'opacity-40'
-												: 'hover:bg-secondary-focus'
-										}  
+								editor?.view.state.selection.empty
+									? 'opacity-40'
+									: 'hover:bg-secondary-focus'
+							}  
                     ${editor?.isActive('italic') ? '!border-black' : ''}
                     `}>
 					<FaItalic className='fill-secondary-content stroke-secondary-content' />
@@ -190,10 +173,10 @@ export function Editor({
 					disabled={editor?.view.state.selection.empty}
 					className={`${styles.button}
                     ${
-											editor?.view.state.selection.empty
-												? 'opacity-40'
-												: 'hover:bg-secondary-focus'
-										}  
+								editor?.view.state.selection.empty
+									? 'opacity-40'
+									: 'hover:bg-secondary-focus'
+							}  
                     ${editor?.isActive('strike') ? '!border-black' : ''}
                     `}>
 					<FaStrikethrough className='fill-secondary-content stroke-secondary-content' />
@@ -202,39 +185,33 @@ export function Editor({
 				<Toolbar.Separator className='h-6 w-[1px] bg-accent' />
 
 				<Toolbar.Button
-					onClick={() =>
-						editor?.chain().focus().toggleHeading({ level: 1 }).run()
-					}
+					onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
 					className={`${styles.button} hover:bg-secondary-focus hidden sm:block
                                     ${
-																			editor?.isActive('heading', { level: 1 })
-																				? '!border-black'
-																				: ''
-																		}`}>
+													editor?.isActive('heading', { level: 1 })
+														? '!border-black'
+														: ''
+												}`}>
 					<FaHeading className='fill-secondary-content stroke-secondary-content' />
 				</Toolbar.Button>
 				<Toolbar.Button
-					onClick={() =>
-						editor?.chain().focus().toggleHeading({ level: 2 }).run()
-					}
+					onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
 					className={`${styles.button} hover:bg-secondary-focus hidden sm:block
                                     ${
-																			editor?.isActive('heading', { level: 2 })
-																				? '!border-black'
-																				: ''
-																		}`}>
+													editor?.isActive('heading', { level: 2 })
+														? '!border-black'
+														: ''
+												}`}>
 					<BiHeading className='fill-secondary-content stroke-secondary-content' />
 				</Toolbar.Button>
 				<Toolbar.Button
-					onClick={() =>
-						editor?.chain().focus().toggleHeading({ level: 3 }).run()
-					}
+					onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
 					className={`${styles.button} hover:bg-secondary-focus hidden sm:block
                                     ${
-																			editor?.isActive('heading', { level: 3 })
-																				? '!border-black'
-																				: ''
-																		}`}>
+													editor?.isActive('heading', { level: 3 })
+														? '!border-black'
+														: ''
+												}`}>
 					<CgFormatHeading className='stroke-secondary-content fill-secondary-content text-secondary-content' />
 				</Toolbar.Button>
 
@@ -244,61 +221,55 @@ export function Editor({
 							<button
 								className={`${styles.button} hover:bg-secondary-focus
                                         ${
-																					editor?.isActive('heading', {
-																						level: 1,
-																					})
-																						? '!border-black'
-																						: ''
-																				}`}>
+															editor?.isActive('heading', {
+																level: 1,
+															})
+																? '!border-black'
+																: ''
+														}`}>
 								<FaHeading className='fill-secondary-content stroke-secondary-content' />
 							</button>
 						</DropdownTrigger>
 						<DropdownContent>
 							<DropdownItem>
 								<Toolbar.Button
-									onClick={() =>
-										editor?.chain().focus().toggleHeading({ level: 1 }).run()
-									}
+									onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
 									className={`${styles.button} hover:bg-secondary-focus
                                             ${
-																							editor?.isActive('heading', {
-																								level: 1,
-																							})
-																								? '!border-black'
-																								: ''
-																						}`}>
+																editor?.isActive('heading', {
+																	level: 1,
+																})
+																	? '!border-black'
+																	: ''
+															}`}>
 									<FaHeading className='fill-secondary-content stroke-secondary-content' />
 								</Toolbar.Button>
 							</DropdownItem>
 							<DropdownItem>
 								<Toolbar.Button
-									onClick={() =>
-										editor?.chain().focus().toggleHeading({ level: 2 }).run()
-									}
+									onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
 									className={`${styles.button} hover:bg-secondary-focus
                                             ${
-																							editor?.isActive('heading', {
-																								level: 2,
-																							})
-																								? '!border-black'
-																								: ''
-																						}`}>
+																editor?.isActive('heading', {
+																	level: 2,
+																})
+																	? '!border-black'
+																	: ''
+															}`}>
 									<BiHeading className='fill-secondary-content stroke-secondary-content' />
 								</Toolbar.Button>
 							</DropdownItem>
 							<DropdownItem>
 								<Toolbar.Button
-									onClick={() =>
-										editor?.chain().focus().toggleHeading({ level: 3 }).run()
-									}
+									onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
 									className={`${styles.button} hover:bg-secondary-focus
                                             ${
-																							editor?.isActive('heading', {
-																								level: 3,
-																							})
-																								? '!border-black'
-																								: ''
-																						}`}>
+																editor?.isActive('heading', {
+																	level: 3,
+																})
+																	? '!border-black'
+																	: ''
+															}`}>
 									<CgFormatHeading className='fill-secondary-content stroke-secondary-content' />
 								</Toolbar.Button>
 							</DropdownItem>
@@ -311,21 +282,13 @@ export function Editor({
 				<Toolbar.Button
 					onClick={() => editor?.chain().focus().toggleBulletList().run()}
 					className={`${styles.button} hover:bg-secondary-focus 
-                                ${
-																	editor?.isActive('bulletList')
-																		? '!border-black'
-																		: ''
-																}`}>
+                                ${editor?.isActive('bulletList') ? '!border-black' : ''}`}>
 					<FaListUl className='fill-secondary-content stroke-secondary-content' />
 				</Toolbar.Button>
 				<Toolbar.Button
 					onClick={() => editor?.chain().focus().toggleOrderedList().run()}
 					className={`${styles.button} hover:bg-secondary-focus 
-                                    ${
-																			editor?.isActive('orderedList')
-																				? '!border-black'
-																				: ''
-																		}`}>
+                                    ${editor?.isActive('orderedList') ? '!border-black' : ''}`}>
 					<FaListOl className='fill-secondary-content stroke-secondary-content' />
 				</Toolbar.Button>
 
@@ -339,11 +302,14 @@ export function Editor({
 									disabled={editor?.view.state.selection.empty}
 									className={`${styles.button}
                                         ${
-																					editor?.view.state.selection.empty
-																						? 'opacity-40'
-																						: 'hover:bg-secondary-focus'
-																				}`}>
-									<VscReferences className='fill-secondary-content stroke-secondary-content' />
+															editor?.view.state.selection.empty
+																? 'opacity-40'
+																: 'hover:bg-secondary-focus'
+														}`}>
+									<div>
+										<span>Add Reference</span>
+										<VscReferences className='fill-secondary-content stroke-secondary-content' />
+									</div>
 								</button>
 							</DialogTrigger>
 							<DialogContent title='Add reference'>
@@ -365,9 +331,7 @@ export function Editor({
 							<Loading loaded={[false]} />
 						</div>
 					)}
-					{saveState === 'error' && (
-						<div className='text-error text-sm'>error</div>
-					)}
+					{saveState === 'error' && <div className='text-error text-sm'>error</div>}
 				</div>
 			</Toolbar.Root>
 			<EditorContent className='peer' editor={editor} />

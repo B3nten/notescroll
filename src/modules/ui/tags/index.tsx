@@ -23,7 +23,7 @@ export function TagViewer({
 		setTagStore(tags)
 	}, [tags])
 
-	const ref = useRef<HTMLInputElement | undefined>()
+	const ref = useRef<any>()
 
 	function addTag(tag: string) {
 		if (tagStore) {

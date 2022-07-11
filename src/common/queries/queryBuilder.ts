@@ -18,7 +18,8 @@ export const queryBuilder = {
 				supabase
 					.from<definitions['documents']>('documents')
 					.select('name, id, campaign_id, type, updated_at, created_at, tags')
-					.eq('campaign_id', cid),
+					.eq('campaign_id', cid)
+					.order('updated_at', { ascending: false }),
 			] as const
 		},
 		single(nid: string) {
@@ -91,15 +92,17 @@ export const queryBuilder = {
 		all() {
 			return [
 				keyBuilder.campaigns.all(),
-				supabase
-					.from<definitions['campaigns']>('campaigns')
-					.select('name, id, updated_at, created_at'),
+				supabase.from<definitions['campaigns']>('campaigns').select('*'),
 			] as const
 		},
 		single(cid: string) {
 			return [
 				keyBuilder.campaigns.single(cid),
-				supabase.from<definitions['campaigns']>('campaigns').select('*').single(),
+				supabase
+					.from<definitions['campaigns']>('campaigns')
+					.select('*')
+					.eq('id', cid)
+					.single(),
 			] as const
 		},
 	},
