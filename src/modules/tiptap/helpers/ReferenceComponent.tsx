@@ -2,11 +2,13 @@ import { NodeViewWrapper } from '@tiptap/react'
 import * as Popover from '@radix-ui/react-popover'
 import styles from './referenceComponent.module.css'
 import { useClientRouter } from '@/common/hooks/useClientRouter'
-import { useSingleNote } from '@/common/hooks/queries/notes'
+import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
+import { queryBuilder } from '@/common/queries/queryBuilder'
 
 export function ReferenceComponent(props: any) {
-	const document = useSingleNote(props.node.attrs.id)
 	const router = useClientRouter()
+	const [documentKey, documentQuery] = queryBuilder.notes.single(props.node.attrs.id)
+	const document = useSupabaseQuery(documentKey, documentQuery)
 
 	return (
 		<NodeViewWrapper contentEditable={false} as='span' className='reference'>
@@ -15,7 +17,8 @@ export function ReferenceComponent(props: any) {
 				<Popover.Content
 					sideOffset={10}
 					className={
-						styles.content + ' p-2 rounded-lg origin-top bg-primary text-primary-content shadow-lg'
+						styles.content +
+						' p-2 rounded-lg origin-top bg-primary text-primary-content shadow-lg'
 					}>
 					<h2 className='text-xl'>
 						{document?.data?.name ? document.data.name : props.node.attrs.name}
@@ -31,7 +34,9 @@ export function ReferenceComponent(props: any) {
 						</div>
 					)}
 					<button
-						onClick={() => router.push(`/campaign/${router.query.cid}/notes/${document.data?.id}`)}
+						onClick={() =>
+							router.push(`/campaign/${router.query.cid}/notes/${document.data?.id}`)
+						}
 						className='btn btn-secondary btn-xs mt-2'>
 						Goto document
 					</button>

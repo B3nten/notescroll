@@ -22,38 +22,39 @@ import { useSpotlight } from '@mantine/spotlight'
 import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
 import { definitions } from '@/types/database'
 import { useQueryClient } from 'react-query'
-import { notesKeyBuilder } from '@/common/hooks/queries/notes'
-import { timelinesKeyBuilder } from '@/common/hooks/queries/timelines'
+import { queryBuilder } from '@/common/queries/queryBuilder'
 
 export function Layout(props: any) {
 	const router = useClientRouter()
 	const queryClient = useQueryClient()
+
+	const [notesKey, notesQuery] = queryBuilder.notes.campaign(router.query.cid as string)
+	const [timelinesKey, timelinesQuery] = queryBuilder.timelines.campaign(
+		router.query.cid as string
+	)
+
 	useEffect(() => {
 		async function preload() {
-			await queryClient.prefetchQuery(
-				notesKeyBuilder.list(router.query.cid as string),
-				async () => {
-					const { data, error } = await supabase.from('documents').select('name, id, type')
-					if (error) throw error
-					return data
-				}
-			)
+			await queryClient.prefetchQuery(notesKey, async () => {
+				const { data, error } = await notesQuery
+				if (error) throw error
+				return data
+			})
 		}
 		preload()
 	}, [])
+
 	useEffect(() => {
 		async function preload() {
-			await queryClient.prefetchQuery(
-				timelinesKeyBuilder.list(router.query.cid as string),
-				async () => {
-					const { data, error } = await supabase.from('timelines').select('name, id')
-					if (error) throw error
-					return data
-				}
-			)
+			await queryClient.prefetchQuery(timelinesKey, async () => {
+				const { data, error } = await timelinesQuery
+				if (error) throw error
+				return data
+			})
 		}
 		preload()
 	}, [])
+
 	const campaign = useSupabaseQuery(
 		['campaign', router.query.cid],
 		supabase
@@ -183,7 +184,9 @@ export function Layout(props: any) {
 				</nav>
 				{session.session && (
 					<div className='relative p-4 w-full mb-8 flex justify-end items-center space-x-2'>
-						<img src='/assets/blank-profile-picture.png' className='w-7 h-7 rounded-full'></img>
+						<img
+							src='/assets/blank-profile-picture.png'
+							className='w-7 h-7 rounded-full'></img>
 						<button onClick={logOut} className='btn btn-sm btn-ghost normal-case'>
 							Logout
 						</button>

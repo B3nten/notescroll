@@ -1,63 +1,82 @@
 import { useClientRouter } from '@/common/hooks/useClientRouter'
 import * as Autosave from '@/modules/autosave'
 import { Layout } from '../../layout'
-import { Menu } from './Menu'
 import { Dialog, DialogTrigger, DialogContent } from '@/common/components/dialog'
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import toast from 'react-hot-toast'
 import supabase from '@/modules/supabase'
-import { EditableDate } from '@/common/components/inputs/EditableDate'
-import * as dayjs from 'dayjs'
-import utc from 'dayjs/plugin/utc'
 import { LoadingSpinner } from '@/common/components/loading'
 import { useAutoAnimate } from '@formkit/auto-animate/react'
 import { useSupabaseQuery } from '@/common/hooks/useSupabaseQuery'
-import { definitions } from '@/types/database'
-import { timelinesKeyBuilder } from '@/common/hooks/queries/timelines'
 import { RichtextWrapper } from '@/modules/tiptap/wrappers/RichtextWrapper'
-dayjs.extend(utc)
+import { queryBuilder } from '@/common/queries/queryBuilder'
+import { useMutation, useQueryClient } from 'react-query'
+import { GiArrowhead } from 'react-icons/gi'
+import produce from 'immer'
+import {
+	Dropdown,
+	DropdownContent,
+	DropdownItem,
+	DropdownTrigger,
+} from '@/common/components/dropdown'
+import { useKeydown } from '@/common/hooks/useKeydown'
+import { GiGearHammer } from 'react-icons/gi'
+import { BiTrash } from 'react-icons/bi'
 
 export default function Timeline() {
 	const router = useClientRouter()
 	const [animateList] = useAutoAnimate()
-	const timelineQuery = supabase
-		.from<definitions['timelines']>('timelines')
-		.select('*')
-		.eq('id', router.query.tid as string)
-		.single()
-	const eventListQuery = supabase
-		.from<definitions['events']>('events')
-		.select('id, date')
-		.eq('timeline_id', router.query.tid as string)
 
-	const timeline = useSupabaseQuery(
-		timelinesKeyBuilder.single(router.query.tid as string),
-		timelineQuery
-	)
-	const eventlist = useSupabaseQuery(['events', router.query.tid], eventListQuery)
+	const [timelineKey, timelineQuery] = queryBuilder.timelines.single(router.query.tid as string)
+	const [eventListKey, eventListQuery] = queryBuilder.events.timeline(router.query.tid as string)
+
+	const [statefulEventList, updateStatefulEventList] = useState<object[] | undefined>(undefined)
+
+	const timeline = useSupabaseQuery(timelineKey, timelineQuery)
+
+	const eventlist = useSupabaseQuery(eventListKey, eventListQuery, {
+		onSuccess(data) {
+			const sortedData = [...data]
+			updateStatefulEventList(
+				sortedData.sort((a, b) => (a.index as number) - (b.index as number))
+			)
+		},
+	})
+
+	function mutateEventOrder(index: number, action: string) {
+		if (statefulEventList) {
+			const newState = produce(statefulEventList, draft => {
+				if (action === 'up' && index !== 0) {
+					const element = draft[index]
+					draft.splice(index, 1)
+					draft.splice(index - 1, 0, element)
+				}
+				if (action === 'down') {
+					const element = draft[index]
+					draft.splice(index, 1)
+					draft.splice(index + 1, 0, element)
+				}
+			})
+			updateStatefulEventList(newState)
+		}
+	}
 
 	if (timeline.isLoading) return <LoadingSpinner />
 
-	const startdate = dayjs.utc(timeline.data?.startdate).format('YYYY MMM DD, hh:mma')
 	return (
 		<>
 			<div className='flex items-center justify-between'>
 				<div>
 					<h1 className='font-heading text-4xl'>
-						<Autosave.String
-							query={timelineQuery}
-							queryKey={timelinesKeyBuilder.single(router.query.tid as string)}
-							field='name'
-						/>
+						<Autosave.String query={timelineQuery} queryKey={timelineKey} field='name' />
 					</h1>
-					<div className='px-2'>Starting date: {startdate}</div>
 				</div>
 				<Menu />
 			</div>
 			<h2 className='mt-10 text-3xl'>Overview</h2>
 			<RichtextWrapper
 				query={timelineQuery}
-				queryKey={timelinesKeyBuilder.single(router.query.tid as string)}
+				queryKey={timelineKey}
 				field='overview'
 				toolbarVisible
 			/>
@@ -66,13 +85,11 @@ export default function Timeline() {
 				<ul ref={animateList} className='relative card-body p-4'>
 					<>
 						<div className='absolute w-[1px] inset-0 mx-auto bg-primary'></div>
-						{eventlist.data
-							?.sort((a: any, b: any) => {
-								return a.date - b.date
-							})
-							.map((ev: any, i: any) => (
-								<Event key={ev.id} id={ev.id} index={i} />
-							))}
+						{statefulEventList?.map((ev: any, i: any) => (
+							<li key={ev.id}>
+								<Event mutateEventOrder={mutateEventOrder} id={ev.id} index={i} />
+							</li>
+						))}
 					</>
 				</ul>
 				<AddEvent />
@@ -81,82 +98,133 @@ export default function Timeline() {
 	)
 }
 
-function AddEvent() {
+function Menu() {
 	const router = useClientRouter()
+	const [delTimelineDialog, setDelTimelineDialog] = useState(false)
+	useKeydown('Escape', () => setDelTimelineDialog(false))
 
-	const timeline = useSupabaseQuery(
-		['timelines', router.query.tid],
-		supabase.from('timelines').select('*').eq('id', router.query.tid).single()
-	)
-	const eventlist = useSupabaseQuery(
-		['events', router.query.tid],
-		supabase.from('events').select('*').eq('timeline_id', router.query.tid)
-	)
-
-	const startTime = timeline.data?.startdate ? timeline.data?.startdate : null
-	let days = null
-	let hours = null
-	if (startTime) {
-		const date = new Date(startTime)
-		const isostr = date.toISOString()
-		days = isostr.split('T')[0]
-		hours = isostr.split('T')[1].substring(0, 5)
-	}
-
-	const name = useRef<HTMLInputElement | null>(null)
-	const date = useRef<HTMLInputElement | null>(null)
-	const time = useRef<HTMLInputElement | null>(null)
-
-	async function addEvent() {
-		const day = date.current?.value
-		const hour = time.current?.value
-		const combined = day + ',' + hour
-		const formatted = combined
-			.split('-')
-			.join(',')
-			.split(' ')
-			.join(',')
-			.split(':')
-			.join(',')
-			.split(',')
-		const finalDate = Date.UTC(...formatted)
-
-		if (name.current?.value?.length > 2) {
-			try {
-				const { error } = await supabase.from('events').insert({
-					name: name.current?.value,
-					campaign_id: router.query.cid,
-					timeline_id: router.query.tid,
-					date: finalDate,
-				})
-				if (error) throw error
-				toast.success('Event added')
-				eventlist.mutate()
-			} catch (error) {
-				toast.error('Could not create event.')
-				console.error(error)
-			}
+	const deleteTimeline = useMutation(
+		async () => {
+			const { data, error } = await supabase
+				.from('timelines')
+				.delete()
+				.eq('id', router.query.tid)
+			if (error) throw error
+			return data
+		},
+		{
+			onError: error => {
+				let message = 'An unknown error occured'
+				if (error instanceof Error) message = error.message
+				toast.error(message)
+			},
+			onSuccess: () => {
+				router.push(`/campaign/${router.query.cid}/timelines`)
+			},
 		}
-	}
+	)
 
 	return (
-		<Dialog>
+		<>
+			<Dropdown>
+				<DropdownTrigger asChild>
+					<button className='btn btn-sm'>
+						<GiGearHammer className='fill-secondary stroke-secondary w-6 h-6' />
+					</button>
+				</DropdownTrigger>
+				<DropdownContent>
+					<DropdownItem>
+						<button className='btn btn-ghost' onClick={() => setDelTimelineDialog(true)}>
+							Delete timeline
+						</button>
+					</DropdownItem>
+				</DropdownContent>
+			</Dropdown>
+			<Dialog open={delTimelineDialog}>
+				<DialogContent title='Delete timeline' setOpen={setDelTimelineDialog}>
+					Are you sure? The timeline and associated events be recovered.
+					<div className='space-x-2 mt-5 flex justify-center'>
+						<button
+							onClick={() => setDelTimelineDialog(false)}
+							className='btn btn-ghost w-20'>
+							No
+						</button>
+						<button onClick={() => deleteTimeline.mutate()} className='btn btn-error w-20'>
+							<div className='flex space-x-2'>
+								<span>Yes</span>
+								{deleteTimeline.isLoading && <LoadingSpinner />}
+							</div>
+						</button>
+					</div>
+				</DialogContent>
+			</Dialog>
+		</>
+	)
+}
+
+function AddEvent() {
+	const router = useClientRouter()
+	const queryClient = useQueryClient()
+	const [eventListKey, eventListQuery] = queryBuilder.events.timeline(router.query.tid as string)
+
+	const [addEventDialog, setAddEventDialog] = useState(false)
+	const name = useRef<any>(null)
+	const insertEvent = useMutation(
+		async ({ eventname }: { eventname: string | null | undefined }) => {
+			if (eventname && eventname.length > 2) {
+				const { error, data } = await supabase.from('events').insert({
+					name: eventname,
+					campaign_id: router.query.cid,
+					timeline_id: router.query.tid,
+				})
+				if (error) throw error
+				return data
+			} else {
+				throw new Error('Improper event name')
+			}
+		},
+		{
+			onError: error => {
+				let message = 'Unknown error'
+				if (error instanceof Error) {
+					message = error.message
+				}
+				toast.error(message)
+			},
+			onSuccess: data => {
+				toast.success('Added event')
+				setAddEventDialog(false)
+				queryClient.setQueryData(eventListKey, oldData => {
+					const newData = [...(oldData as {}[])]
+					newData.push(data[0])
+					return newData
+				})
+			},
+		}
+	)
+
+	return (
+		<Dialog open={addEventDialog}>
 			<DialogTrigger asChild>
-				<button className='btn btn-circle text-2xl mx-auto mb-2'>+</button>
+				<button
+					onClick={() => setAddEventDialog(true)}
+					className='btn btn-circle text-2xl mx-auto mb-2'>
+					+
+				</button>
 			</DialogTrigger>
-			<DialogContent title='Add event'>
+			<DialogContent title='Add event' setOpen={setAddEventDialog}>
 				<div className='space-y-2'>
 					<label className='block'>
 						<div>Event Name</div>
 						<input ref={name} className='input input-primary w-full' />
 					</label>
-					<label className='block'>
-						<div>Event date and time</div>
-						<input ref={date} type='date' className='input input-primary' defaultValue={days} />
-						<input ref={time} type='time' className='input input-primary' defaultValue={hours} />
-					</label>
-					<button onClick={() => addEvent()} className='btn btn-primary'>
-						Create
+					<button
+						onClick={() => insertEvent.mutate({ eventname: name.current?.value })}
+						className='btn btn-primary'>
+						<div>
+							<span>Create</span>
+							{insertEvent.isLoading && <LoadingSpinner />}
+						</div>
 					</button>
 				</div>
 			</DialogContent>
@@ -168,10 +236,50 @@ function isEven(n: number) {
 	return n % 2 == 0
 }
 
-function Event({ id, index }: any) {
-	const query = supabase.from<definitions['events']>('events').select('*').eq('id', id).single()
-	const event = useSupabaseQuery(['event', id], query)
-	const date = dayjs.utc(event.data?.date).format('YYYY MMM DD, hh:mma')
+function Event({
+	id,
+	index,
+	mutateEventOrder,
+}: {
+	id: string
+	index: number
+	mutateEventOrder: (index: number, action: string) => void
+}) {
+	const router = useClientRouter()
+	const queryClient = useQueryClient()
+	const [eventListKey, eventListQuery] = queryBuilder.events.timeline(router.query.tid as string)
+	const [eventKey, eventQuery] = queryBuilder.events.single(id)
+
+	const event = useSupabaseQuery(eventKey, eventQuery, {
+		onSettled: () => {},
+	})
+
+	const mutateIndex = useMutation(async () => {
+		const { data, error } = await supabase.from('events').update({ index: index }).eq('id', id)
+		if (error) throw error
+		return data
+	})
+
+	const deleteEvent = useMutation(
+		async () => {
+			const { data, error } = await supabase.from('events').delete().eq('id', id)
+			if (error) throw error
+			return data
+		},
+		{
+			onSuccess: () => {
+				queryClient.setQueryData(eventListKey, (oldData: any) => {
+					return oldData.filter((event: any) => event.id !== id)
+				})
+			},
+		}
+	)
+
+	useEffect(() => {
+		if (typeof event.data?.index === 'number' && index !== event.data.index) {
+			mutateIndex.mutate()
+		}
+	}, [index])
 
 	return (
 		<div
@@ -182,11 +290,30 @@ function Event({ id, index }: any) {
 				className={`relative transition-all duration-1000 bg-base-300 p-2 rounded-md xl:w-1/2 ${
 					!isEven(index) && 'xl:translate-x-[100%]'
 				}`}>
-				<div className='text-3xl'>
-					<Autosave.String query={query} queryKey={['event', id]} field='name' />
+				<div className='flex justify-between items-center'>
+					<div className='text-3xl'>
+						<Autosave.String query={eventQuery} queryKey={eventKey} field='name' />
+					</div>
+					<div className='flex'>
+						<button
+							onClick={() => mutateEventOrder(index, 'up')}
+							className='p-2 hover:-translate-y-1 transition hover:bg-base-200 rounded-sm'>
+							<GiArrowhead className='rotate-[225deg] ' />
+						</button>
+						<button
+							onClick={() => mutateEventOrder(index, 'down')}
+							className='p-2 hover:translate-y-1 transition hover:bg-base-200 rounded-sm'>
+							<GiArrowhead className='rotate-45' />
+						</button>
+						<button
+							onClick={() => deleteEvent.mutate()}
+							className='p-2 transition hover:bg-base-200 rounded-sm'>
+							{!deleteEvent.isLoading && <BiTrash />}
+							{deleteEvent.isLoading && <LoadingSpinner />}
+						</button>
+					</div>
 				</div>
-				<EditableDate query={query} field='date' eventID={id} />
-				<RichtextWrapper query={query} queryKey={['event', id]} field='overview' />
+				<RichtextWrapper query={eventQuery} queryKey={eventKey} field='overview' />
 			</div>
 		</div>
 	)
