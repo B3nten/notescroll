@@ -142,8 +142,10 @@ export function Richtext({
 					disabled={editor?.view.state.selection.empty}
 					className={`${styles.button}
                     ${
-											editor?.view.state.selection.empty ? 'opacity-40' : 'hover:bg-secondary-focus'
-										}  
+								editor?.view.state.selection.empty
+									? 'opacity-40'
+									: 'hover:bg-secondary-focus'
+							}  
                     ${editor?.isActive('bold') ? '!border-black' : ''}`}>
 					<FaBold className='fill-secondary-content stroke-secondary-content' />
 				</Toolbar.Button>
@@ -152,8 +154,10 @@ export function Richtext({
 					disabled={editor?.view.state.selection.empty}
 					className={`${styles.button}
                     ${
-											editor?.view.state.selection.empty ? 'opacity-40' : 'hover:bg-secondary-focus'
-										}  
+								editor?.view.state.selection.empty
+									? 'opacity-40'
+									: 'hover:bg-secondary-focus'
+							}  
                     ${editor?.isActive('italic') ? '!border-black' : ''}
                     `}>
 					<FaItalic className='fill-secondary-content stroke-secondary-content' />
@@ -163,8 +167,10 @@ export function Richtext({
 					disabled={editor?.view.state.selection.empty}
 					className={`${styles.button}
                     ${
-											editor?.view.state.selection.empty ? 'opacity-40' : 'hover:bg-secondary-focus'
-										}  
+								editor?.view.state.selection.empty
+									? 'opacity-40'
+									: 'hover:bg-secondary-focus'
+							}  
                     ${editor?.isActive('strike') ? '!border-black' : ''}
                     `}>
 					<FaStrikethrough className='fill-secondary-content stroke-secondary-content' />
@@ -176,30 +182,30 @@ export function Richtext({
 					onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
 					className={`${styles.button} hover:bg-secondary-focus hidden sm:block
                                     ${
-																			editor?.isActive('heading', { level: 1 })
-																				? '!border-black'
-																				: ''
-																		}`}>
+													editor?.isActive('heading', { level: 1 })
+														? '!border-black'
+														: ''
+												}`}>
 					<FaHeading className='fill-secondary-content stroke-secondary-content' />
 				</Toolbar.Button>
 				<Toolbar.Button
 					onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
 					className={`${styles.button} hover:bg-secondary-focus hidden sm:block
                                     ${
-																			editor?.isActive('heading', { level: 2 })
-																				? '!border-black'
-																				: ''
-																		}`}>
+													editor?.isActive('heading', { level: 2 })
+														? '!border-black'
+														: ''
+												}`}>
 					<BiHeading className='fill-secondary-content stroke-secondary-content' />
 				</Toolbar.Button>
 				<Toolbar.Button
 					onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
 					className={`${styles.button} hover:bg-secondary-focus hidden sm:block
                                     ${
-																			editor?.isActive('heading', { level: 3 })
-																				? '!border-black'
-																				: ''
-																		}`}>
+													editor?.isActive('heading', { level: 3 })
+														? '!border-black'
+														: ''
+												}`}>
 					<CgFormatHeading className='stroke-secondary-content fill-secondary-content text-secondary-content' />
 				</Toolbar.Button>
 
@@ -209,12 +215,12 @@ export function Richtext({
 							<button
 								className={`${styles.button} hover:bg-secondary-focus
                                         ${
-																					editor?.isActive('heading', {
-																						level: 1,
-																					})
-																						? '!border-black'
-																						: ''
-																				}`}>
+															editor?.isActive('heading', {
+																level: 1,
+															})
+																? '!border-black'
+																: ''
+														}`}>
 								<FaHeading className='fill-secondary-content stroke-secondary-content' />
 							</button>
 						</DropdownTrigger>
@@ -225,12 +231,12 @@ export function Richtext({
 									onClick={() => editor?.chain().focus().toggleHeading({ level: 1 }).run()}
 									className={`${styles.button} hover:bg-secondary-focus
                                             ${
-																							editor?.isActive('heading', {
-																								level: 1,
-																							})
-																								? '!border-black'
-																								: ''
-																						}`}>
+																editor?.isActive('heading', {
+																	level: 1,
+																})
+																	? '!border-black'
+																	: ''
+															}`}>
 									<FaHeading className='fill-secondary-content stroke-secondary-content' />
 								</Toolbar.Button>
 							</DropdownItem>
@@ -239,12 +245,12 @@ export function Richtext({
 									onClick={() => editor?.chain().focus().toggleHeading({ level: 2 }).run()}
 									className={`${styles.button} hover:bg-secondary-focus
                                             ${
-																							editor?.isActive('heading', {
-																								level: 2,
-																							})
-																								? '!border-black'
-																								: ''
-																						}`}>
+																editor?.isActive('heading', {
+																	level: 2,
+																})
+																	? '!border-black'
+																	: ''
+															}`}>
 									<BiHeading className='fill-secondary-content stroke-secondary-content' />
 								</Toolbar.Button>
 							</DropdownItem>
@@ -253,12 +259,12 @@ export function Richtext({
 									onClick={() => editor?.chain().focus().toggleHeading({ level: 3 }).run()}
 									className={`${styles.button} hover:bg-secondary-focus
                                             ${
-																							editor?.isActive('heading', {
-																								level: 3,
-																							})
-																								? '!border-black'
-																								: ''
-																						}`}>
+																editor?.isActive('heading', {
+																	level: 3,
+																})
+																	? '!border-black'
+																	: ''
+															}`}>
 									<CgFormatHeading className='fill-secondary-content stroke-secondary-content' />
 								</Toolbar.Button>
 							</DropdownItem>
@@ -284,18 +290,21 @@ export function Richtext({
 				<Toolbar.Separator className='h-6 w-[1px] bg-accent' />
 
 				<Toolbar.Button asChild>
-					<div className='flex items-center'>
+					<div className='flex items-center justify-center'>
 						<Dialog>
 							<DialogTrigger>
 								<button
 									disabled={editor?.view.state.selection.empty}
 									className={`${styles.button}
                                         ${
-																					editor?.view.state.selection.empty
-																						? 'opacity-40'
-																						: 'hover:bg-secondary-focus'
-																				}`}>
-									<VscReferences className='fill-secondary-content stroke-secondary-content' />
+															editor?.view.state.selection.empty
+																? 'opacity-40'
+																: 'hover:bg-secondary-focus'
+														}`}>
+									<div className='flex items-center space-x-1'>
+										<span className='text-secondary-content'>Add Reference</span>
+										<VscReferences className='fill-secondary-content stroke-secondary-content' />
+									</div>
 								</button>
 							</DialogTrigger>
 							<DialogContent title='Add reference'>

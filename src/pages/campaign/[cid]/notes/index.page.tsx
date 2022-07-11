@@ -21,7 +21,7 @@ export default function Notes() {
 	const list = useSupabaseQuery(queryKey, queryFn)
 	console.log('list: ', list)
 
-	const [animateRef] = useAutoAnimate()
+	const [animateRef] = useAutoAnimate<any>()
 
 	function getRouterTagsAsArray(): string[] {
 		let routerTags: string[] = []
@@ -43,7 +43,7 @@ export default function Notes() {
 		if (router.query.sort === 'type') {
 			newList.sort((a, b) => a.type.localeCompare(b.type))
 		} else if (router.query.sort === 'name') {
-			newList.sort((a, b) => a.name.localeCompare(b.name))
+			newList.sort((a: any, b): any => a.name.localeCompare(b.name))
 		} else {
 			newList.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
 		}

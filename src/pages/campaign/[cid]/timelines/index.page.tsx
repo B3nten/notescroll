@@ -77,7 +77,7 @@ export default function Timelines() {
 	const [queryKey, queryFn] = queryBuilder.timelines.campaign(router.query.cid as string)
 	const list = useSupabaseQuery(queryKey, queryFn)
 
-	const [animateRef] = useAutoAnimate()
+	const [animateRef] = useAutoAnimate<any>()
 
 	function getRouterTagsAsArray(): string[] {
 		let routerTags: string[] = []
@@ -97,9 +97,11 @@ export default function Timelines() {
 		let newList = list.data
 
 		if (router.query.sort === 'name') {
-			newList.sort((a, b) => a.name.localeCompare(b.name))
+			newList.sort((a: any, b: any) => a.name.localeCompare(b.name))
 		} else {
-			newList.sort((a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime())
+			newList.sort(
+				(a: any, b: any) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+			)
 		}
 
 		if (router.query.tags && router.query.tags.length > 0) {
